@@ -1,8 +1,11 @@
 import React from 'react';
-import './styles/index.scss';
 
-function App() {
-    return <h1 className="App">GitHub Analyzer</h1>;
-}
+import Home from 'pages/Home/Home';
+
+import './styles/global.scss';
+
+const App = () => {
+    return <Home />;
+};
 
 export default App;

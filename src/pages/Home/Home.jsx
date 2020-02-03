@@ -5,7 +5,7 @@ import './Home.scss';
 const Home = () => {
     return (
         // Search for a user
-        <div>Home</div>
+        <div className="container" />
     );
 };
 

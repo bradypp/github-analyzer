@@ -8,8 +8,10 @@ const User = () => {
     const githubContext = useContext(GithubContext);
     const { user, loading } = githubContext;
     return (
-        <div className="user-page">
-            <div className="user-info">Users</div>
+        <div className="container">
+            <div className="user-info">
+                <h1>User Info</h1>
+            </div>
         </div>
     );
 };

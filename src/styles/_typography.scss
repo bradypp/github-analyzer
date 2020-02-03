@@ -4,4 +4,6 @@ body {
     font-size: var(--default-font-size);
     line-height: 1.7;
     color: var(--color-grey-dark-3);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

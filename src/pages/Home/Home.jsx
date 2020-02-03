@@ -1,9 +1,12 @@
 import React from 'react';
 
-import User from 'components/User/User';
+import './Home.scss';
 
 const Home = () => {
-    return <User />;
+    return (
+        // Search for a user
+        <div>Home</div>
+    );
 };
 
 export default Home;

@@ -1,11 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home, User } from 'pages';
+import { GithubState } from 'context/github';
 
-import Home from 'pages/Home/Home';
-
-import './styles/global.scss';
+import './styles/main.scss';
 
 const App = () => {
-    return <Home />;
+    return (
+        <GithubState>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/user/:login" component={User} />
+                </Switch>
+            </Router>
+        </GithubState>
+    );
 };
 
 export default App;

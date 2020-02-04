@@ -21,6 +21,7 @@
     "func-names": 0,
     "no-shadow": 0,
     "import/no-unresolved": 0,
+    "no-unused-vars": 1,
 
     // React Rules
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],

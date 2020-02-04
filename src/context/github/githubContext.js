@@ -33,7 +33,7 @@ export const GithubState = ({ children }) => {
         const res = await axios.get(
             `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
         );
-        console.log(res);
+
         dispatch({
             type: GET_USER,
             payload: res.data,

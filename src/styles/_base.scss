@@ -11,19 +11,13 @@ html {
     box-sizing: border-box;
 }
 
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--color-primary-dark);
-}
-
-ul {
+ul,
+ol {
     list-style: none;
 }
 
 img {
     width: 100%;
+    max-width: 100%;
+    vertical-align: middle;
 }

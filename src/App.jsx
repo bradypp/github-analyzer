@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import { Home, User } from 'pages';
 import { GithubState } from 'context/github';
 
@@ -9,10 +10,12 @@ const App = () => {
     return (
         <GithubState>
             <Router>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/user/:login" component={User} />
-                </Switch>
+                <div className="container">
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/user/:login" component={User} />
+                    </Switch>
+                </div>
             </Router>
         </GithubState>
     );

@@ -1,11 +1,10 @@
 import React from 'react';
-
-import './Home.scss';
+import './HomeStyles.scss';
 
 const Home = () => {
     return (
         // Search for a user
-        <div className="container" />
+        <div className="home">Home</div>
     );
 };
 

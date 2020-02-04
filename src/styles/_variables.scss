@@ -17,19 +17,24 @@
     --color-white-alternate: #f6f8fa;
 
     // SHADOWS
-    --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
-    --shadow-medium: 0 2rem 5rem rgba(0, 0, 0, 0.12);
+    --shadow-light: 0 2rem 4rem rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 2rem 5rem rgba(0, 0, 0, 0.1);
     --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 
     // FONT
+    --primary-font-family: 'Lato', sans-serif;
+    // --secondary-font-family:
     --default-font-size: 1.6rem;
 
     // GRID
     --grid-width: 120rem;
-    --number-of-columns: 12;
+    --number-of-columns: 16;
     --grid-column-gap: 2rem;
     --grid-row-gap: 2rem;
 
     // DIVIDER
     --line: 1px solid var(--color-primary-accent);
+
+    // ANIMATIONS
+    --transition: all 0.2s ease-in-out;
 }

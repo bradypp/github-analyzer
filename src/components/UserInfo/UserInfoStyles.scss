@@ -1,0 +1,28 @@
+.user-info {
+    grid-column: center-start / 6;
+
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    font-weight: 600;
+
+    &__img {
+        // display: block;
+        // grid-column: 1 / -1;
+        // justify-self: center;
+        align-self: center;
+        border-radius: 50%;
+        box-shadow: var(--shadow-medium);
+        width: 20rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__items > * {
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+    }
+}

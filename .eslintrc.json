@@ -1,8 +1,4 @@
 {
-  // React
-  // npx install-peerdeps --dev eslint-config-airbnb
-  // yad prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-config-node eslint-plugin-node babel-eslint eslint-plugin-react eslint-plugin-jsx-a11y eslint-plugin-react-hooks eslint-plugin-import eslint-config-airbnb
-
   "extends": ["airbnb", "airbnb/hooks", "prettier/react", "prettier"],
   "plugins": ["prettier"],
   "parser": "babel-eslint",
@@ -25,6 +21,7 @@
     "func-names": 0,
     "no-shadow": 0,
     "import/no-unresolved": 0,
+    "no-unused-vars": 1,
 
     // React Rules
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
@@ -33,6 +30,7 @@
     "react/prop-types": [2, { "skipUndeclared": true }],
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "no-use-before-define": 0
   }
 }

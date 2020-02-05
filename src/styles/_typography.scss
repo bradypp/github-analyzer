@@ -1,11 +1,22 @@
-:root {
-    --default-font-size: 1.6rem;
-}
-
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--primary-font-family);
     font-weight: 400;
     font-size: var(--default-font-size);
     line-height: 1.7;
-    color: var(--color-grey-dark-1);
+    color: var(--color-grey-dark-3);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--color-link);
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
 }

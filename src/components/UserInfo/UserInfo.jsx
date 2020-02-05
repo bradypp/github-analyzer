@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
+import Octicon, { Briefcase, Calendar, Mail, Location, Link } from '@primer/octicons-react';
 
 import PropTypes from 'prop-types';
 import { GithubContext } from 'context/github';
@@ -21,24 +22,77 @@ const UserInfo = ({ match }) => {
                 <p>Loading...</p>
             ) : (
                 <>
-                    <img className="user-info__img" src={user.avatar_url} alt="User Avatar" />
-                    <ul className="user-info__items">
-                        <li>{user.name && user.name}</li>
-                        <li>{user.company && user.company}</li>
-                        <li>{user.location && user.location}</li>
-                        {user.created_at && (
-                            <li>
-                                Joined{' '}
-                                {new Date(user.created_at).toLocaleDateString('en-UK', {
-                                    day: 'numeric',
-                                    month: 'long',
-                                    year: 'numeric',
-                                })}
-                            </li>
-                        )}
-                        <li>{user.bio && user.bio}</li>
-                        <li>{user.bio && user.bio}</li>
-                    </ul>
+                    {user.avatar_url && (
+                        <img className="user-info__img" src={user.avatar_url} alt="User Avatar" />
+                    )}
+
+                    {user.name && <h1 className="user-info__item-name">{user.name}</h1>}
+
+                    {user.login && (
+                        <span className="user-info__item-login">
+                            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                                @{user.login}
+                            </a>
+                        </span>
+                    )}
+
+                    {user.bio && <span className="user-info__item-bio">{user.bio}</span>}
+                    {user.company && (
+                        <div className="user-info__item">
+                            <Octicon
+                                className="user-info__item__octicon"
+                                icon={Briefcase}
+                                size="small"
+                            />
+                            {user.company}
+                        </div>
+                    )}
+
+                    {user.location && (
+                        <div className="user-info__item">
+                            <Octicon
+                                className="user-info__item__octicon"
+                                icon={Location}
+                                size="small"
+                            />
+                            {user.location}
+                        </div>
+                    )}
+                    {user.email && (
+                        <div className="user-info__item">
+                            <Octicon
+                                className="user-info__item__octicon"
+                                icon={Mail}
+                                size="small"
+                            />
+                            {user.email}
+                        </div>
+                    )}
+                    {user.blog && (
+                        <div className="user-info__item">
+                            <Octicon
+                                className="user-info__item__octicon"
+                                icon={Link}
+                                size="small"
+                            />
+                            {user.blog}
+                        </div>
+                    )}
+                    {user.created_at && (
+                        <div className="user-info__item">
+                            <Octicon
+                                className="user-info__item__octicon"
+                                icon={Calendar}
+                                size="small"
+                            />
+                            Joined{' '}
+                            {new Date(user.created_at).toLocaleDateString('en-UK', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                        </div>
+                    )}
                 </>
             )}
         </div>

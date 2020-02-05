@@ -9,13 +9,14 @@ body {
 }
 
 a {
-    text-decoration: none;
-    color: var(--color-primary);
-    transition: var(--transition);
+    color: var(--color-link);
 
-    &:hover,
-    &:focus {
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover {
         text-decoration: underline;
-        color: var(--color-primary-dark);
     }
 }

@@ -16,13 +16,36 @@
         align-self: center;
         border-radius: 50%;
         box-shadow: var(--shadow-medium);
-        width: 20rem;
-        margin-bottom: 0.5rem;
+        width: 100%;
+        margin-bottom: 1rem;
     }
 
-    &__items > * {
-        &:not(:last-child) {
-            margin-bottom: 0.5rem;
+    &__item {
+        // TODO: split into seperate sections above and below borders so the last child has the border and margin-bottom
+        margin-top: 0.6rem;
+        font-size: 1.5rem;
+
+        display: flex;
+        align-items: center;
+
+        &-name {
+            margin-bottom: -2rem;
+        }
+
+        &-login {
+            @extend .user-info__item;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: -0.5rem;
+        }
+
+        &-bio {
+            @extend .user-info__item;
+            border-bottom: var(--line);
+            padding-bottom: 1rem;
+        }
+        &__octicon {
+            margin-right: 1rem;
         }
     }
 }

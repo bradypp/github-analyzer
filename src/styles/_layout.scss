@@ -1,3 +1,10 @@
+:root {
+    --grid-width: 120rem;
+    --number-of-columns: 16;
+    --grid-column-gap: 2rem;
+    --grid-row-gap: 2rem;
+}
+
 .container {
     display: grid;
     grid-template-columns:

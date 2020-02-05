@@ -1,3 +1,12 @@
-.margin-bottom {
-    margin-bottom: 5px;
+:root {
+    // SHADOWS
+    --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 2rem 5rem rgba(0, 0, 0, 0.12);
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+
+    // DIVIDER
+    --line: 1px solid var(--color-grey-light-2);
+
+    // ANIMATIONS
+    --transition: all 0.2s ease-in-out;
 }

@@ -15,15 +15,9 @@ const Repos = ({ match }) => {
     }, [match.params.login]);
 
     return (
-        <div className="repos">
-            {loading ? (
-                <Spinner />
-            ) : (
-                repos.map(repo => {
-                    return <div>{repo.name}</div>;
-                })
-            )}
-        </div>
+        <ul className="repos">
+            {loading ? <Spinner /> : repos.map(repo => <RepoItem key={repo.id} repo={repo} />)}
+        </ul>
     );
 };
 

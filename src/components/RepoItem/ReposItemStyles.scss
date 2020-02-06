@@ -1,0 +1,50 @@
+.repo-item {
+    padding: 2rem;
+    height: 18rem;
+    border-radius: 0.4rem;
+    box-shadow: var(--shadow-card);
+
+    &:hover,
+    &:focus {
+        box-shadow: var(--shadow-card-active);
+    }
+
+    svg {
+        max-width: 16px;
+        margin-right: 1rem;
+    }
+
+    &__name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 0.75rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    &__description,
+    &__attributes {
+        font-size: 14px;
+        margin-bottom: 2rem;
+        color: var(--color-grey-dark-2);
+    }
+
+    &__attributes {
+        display: flex;
+    }
+
+    &__name {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.repo-github-url {
+    color: var(--color-grey-dark-3);
+
+    &:hover {
+        text-decoration: none;
+    }
+}

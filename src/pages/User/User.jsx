@@ -3,7 +3,7 @@ import { UserInfo, Repos } from 'components';
 import './UserStyles.scss';
 
 const User = () => (
-    <div className="container">
+    <div className="container container--user">
         <UserInfo />
         <Repos />
     </div>

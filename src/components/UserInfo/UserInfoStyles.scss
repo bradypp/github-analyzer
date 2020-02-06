@@ -5,6 +5,12 @@
     padding: 2rem;
     font-weight: 600;
 
+    svg {
+        width: 16px;
+        margin-right: 1rem;
+        margin-bottom: 1px;
+    }
+
     &__top {
         border-bottom: var(--line);
         padding-bottom: 1.5rem;
@@ -40,12 +46,5 @@
                 margin-bottom: 0.5rem;
             }
         }
-    }
-
-    &__top__octicon,
-    &__items__octicon {
-        width: 16px;
-        margin-right: 1rem;
-        margin-bottom: 1px;
     }
 }

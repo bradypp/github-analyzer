@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import Octicon, { Briefcase, Calendar, Mail, Location, Link } from '@primer/octicons-react';
 import PropTypes from 'prop-types';
+import Octicon, { Briefcase, Calendar, Mail, Location, Link } from '@primer/octicons-react';
 import { UserInfoContext } from 'context';
+import { Spinner } from 'components';
 import './UserInfoStyles.scss';
 
 const UserInfo = ({ match }) => {
@@ -15,81 +16,94 @@ const UserInfo = ({ match }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.params.login]);
 
+    const {
+        avatar_url,
+        html_url,
+        name,
+        login,
+        bio,
+        company,
+        location,
+        email,
+        blog,
+        created_at,
+    } = user;
+
     return (
-        <>
+        <div className="user-info">
             {loading ? (
-                <p>Loading...</p>
+                <Spinner />
             ) : (
-                <div className="user-info">
+                <>
                     <div className="user-info__top">
-                        {user.avatar_url && (
-                            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                        {avatar_url && (
+                            <a href={html_url} target="_blank" rel="noopener noreferrer">
                                 <img
                                     className="user-info__top__img"
-                                    src={user.avatar_url}
+                                    src={avatar_url}
                                     alt="User Avatar"
                                 />
                             </a>
                         )}
 
-                        {user.name && <h1 className="user-info__top__name">{user.name}</h1>}
+                        {name && <h1 className="user-info__top__name">{name}</h1>}
 
-                        {user.login && (
+                        {login && (
                             <a
-                                href={user.html_url}
+                                href={html_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="user-info__top__login">
-                                @{user.login}
+                                @{login}
                             </a>
                         )}
-                        {user.bio && <div className="user-info__top__bio">{user.bio}</div>}
+                        {bio && <div className="user-info__top__bio">{bio}</div>}
                     </div>
 
                     <div className="user-info__items">
-                        {user.company && (
+                        {company && (
                             <div className="user-info__items__item">
                                 <Octicon
                                     className="user-info__items__octicon"
                                     icon={Briefcase}
                                     size="small"
                                 />
-                                {user.company}
+                                {company}
                             </div>
                         )}
-                        {user.location && (
+                        {location && (
                             <div className="user-info__items__item">
                                 <Octicon
                                     className="user-info__items__octicon"
                                     icon={Location}
                                     size="small"
                                 />
-                                {user.location}
+                                {location}
                             </div>
                         )}
-                        {user.email && (
+                        {email && (
                             <div className="user-info__items__item">
                                 <Octicon
                                     className="user-info__items__octicon"
                                     icon={Mail}
                                     size="small"
                                 />
-                                {user.email}
+                                {email}
                             </div>
                         )}
-                        {user.blog && (
+                        {blog && (
                             <div className="user-info__items__item">
                                 <Octicon
                                     className="user-info__items__octicon"
                                     icon={Link}
                                     size="small"
                                 />
-                                <a href={user.blog} target="_blank" rel="noopener noreferrer">
-                                    {user.blog}
+                                <a href={blog} target="_blank" rel="noopener noreferrer">
+                                    {blog}
                                 </a>
                             </div>
                         )}
-                        {user.created_at && (
+                        {created_at && (
                             <div className="user-info__items__item">
                                 <Octicon
                                     className="user-info__items__octicon"
@@ -97,7 +111,7 @@ const UserInfo = ({ match }) => {
                                     size="small"
                                 />
                                 Joined{' '}
-                                {new Date(user.created_at).toLocaleDateString('en-UK', {
+                                {new Date(created_at).toLocaleDateString('en-UK', {
                                     day: 'numeric',
                                     month: 'long',
                                     year: 'numeric',
@@ -105,9 +119,9 @@ const UserInfo = ({ match }) => {
                             </div>
                         )}
                     </div>
-                </div>
+                </>
             )}
-        </>
+        </div>
     );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReposContext } from 'context';
+import { Spinner, RepoItem } from 'components';
 import './ReposStyles.scss';
 
 const Repos = ({ match }) => {
@@ -14,18 +15,15 @@ const Repos = ({ match }) => {
     }, [match.params.login]);
 
     return (
-        <>
+        <div className="repos">
             {loading ? (
-                <div>Loading...</div>
+                <Spinner />
             ) : (
-                <div>
-                    {repos.map(repo => {
-                        console.log(repo);
-                        return <div>{repo.name}</div>;
-                    })}
-                </div>
+                repos.map(repo => {
+                    return <div>{repo.name}</div>;
+                })
             )}
-        </>
+        </div>
     );
 };
 

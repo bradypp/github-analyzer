@@ -28,7 +28,7 @@ export const ReposState = ({ children }) => {
         setLoading();
 
         const res = await axios.get(
-            `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
+            `https://api.github.com/users/${username}/repos?per_page=100&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
         );
         dispatch({
             type: GET_REPOS,

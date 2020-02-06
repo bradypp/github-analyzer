@@ -1,0 +1,13 @@
+.container {
+    grid-template-rows: repeat(2, 40rem);
+}
+
+.search-form {
+    grid-column: center-start / center-end;
+    grid-row: 2;
+    justify-self: center;
+
+    &__text-input {
+        width: 50rem;
+    }
+}

@@ -1,2 +1,2 @@
-export { UserInfoContext, UserInfoState } from './userInfo';
-export { ReposContext, ReposState } from './repos';
+export { UserInfoContext, UserInfoState } from './userInfo/userInfoContext';
+export { ReposContext, ReposState } from './repos/reposContext';

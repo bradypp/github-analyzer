@@ -1,5 +1,5 @@
 .user-info {
-    grid-column: center-start / 6;
+    grid-column: center-start / col-end 4;
     display: flex;
     flex-direction: column;
     padding: 2rem;

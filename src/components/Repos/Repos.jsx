@@ -2,12 +2,13 @@ import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ReposContext } from 'context';
-import { Spinner, RepoItem } from 'components';
+import FlipMove from 'react-flip-move';
+import { RepoItem } from 'components';
 import './ReposStyles.scss';
 
 const Repos = ({ match }) => {
     const reposContext = useContext(ReposContext);
-    const { repos, loading, getRepos } = reposContext;
+    const { repos, getRepos } = reposContext;
 
     useEffect(() => {
         getRepos(match.params.login);
@@ -15,9 +16,16 @@ const Repos = ({ match }) => {
     }, [match.params.login]);
 
     return (
-        <ul className="repos">
-            {loading ? <Spinner /> : repos.map(repo => <RepoItem key={repo.id} repo={repo} />)}
-        </ul>
+        <div className="repos">
+            <FlipMove>
+                <h1 className="repos__title">Top Repos</h1>
+                <ul className="repos__items">
+                    {repos.map(repo => (
+                        <RepoItem key={repo.id} repo={repo} />
+                    ))}
+                </ul>
+            </FlipMove>
+        </div>
     );
 };
 

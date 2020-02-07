@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Octicon, { MarkGithub } from '@primer/octicons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './HomeStyles.scss';
 
 const Home = ({ history }) => {
@@ -18,17 +21,24 @@ const Home = ({ history }) => {
 
     return (
         // Search for a user
-        <div className="container">
-            <form onSubmit={onSubmit} className="search-form">
-                <input
-                    type="text"
-                    name="text"
-                    className="search-form__text-input"
-                    placeholder="Search Users..."
-                    value={searchText}
-                    onChange={onChange}
-                />
-                <input type="submit" value="Search" className="search-form__submit-button" />
+        <div className="home">
+            <form onSubmit={onSubmit} className="home__form">
+                <Octicon icon={MarkGithub} size="large" className="home__form__github-icon" />
+                <label htmlFor="username" className="home__form__label">
+                    Find a GitHub Profile
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        className="home__form__input"
+                        placeholder="Enter Username..."
+                        value={searchText}
+                        onChange={onChange}
+                    />
+                    <button type="submit" className="home__form__submit">
+                        <FontAwesomeIcon icon={faSearch} size="6x" />
+                    </button>
+                </label>
             </form>
         </div>
     );

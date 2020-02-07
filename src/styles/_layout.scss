@@ -1,8 +1,7 @@
 :root {
-    --grid-width: 130rem;
+    --grid-width: calc(130rem - var(--number-of-columns) * var(--grid-gap));
     --number-of-columns: 16;
-    --grid-column-gap: 2rem;
-    --grid-row-gap: 2rem;
+    --grid-gap: 2rem;
 }
 
 .container {
@@ -15,4 +14,5 @@
         )
         [center-end] minmax(6rem, 1fr) [full-end];
     background-color: var(--color-white-alternate);
+    grid-gap: var(--grid-gap);
 }

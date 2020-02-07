@@ -2,7 +2,14 @@
 import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Octicon, { Briefcase, Calendar, Mail, Location, Link } from '@primer/octicons-react';
+import Octicon, {
+    Briefcase,
+    Calendar,
+    Mail,
+    Location,
+    Link,
+    MarkGithub,
+} from '@primer/octicons-react';
 import { UserInfoContext } from 'context';
 import { Spinner } from 'components';
 import './UserInfoStyles.scss';
@@ -27,6 +34,10 @@ const UserInfo = ({ match }) => {
         email,
         blog,
         created_at,
+        public_repos,
+        public_gists,
+        followers,
+        following,
     } = user;
 
     return (
@@ -54,7 +65,12 @@ const UserInfo = ({ match }) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="user-info__top__login">
-                                @{login}
+                                <Octicon
+                                    className="user-info__top__octicon"
+                                    icon={MarkGithub}
+                                    size="small"
+                                />
+                                {login}
                             </a>
                         )}
                         {bio && <div className="user-info__top__bio">{bio}</div>}

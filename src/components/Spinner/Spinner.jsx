@@ -1,18 +1,10 @@
 import React from 'react';
-import spinner from './spinner.gif';
+import './SpinnerStyles.scss';
 
 const Spinner = () => (
-    <>
-        <img
-            src={spinner}
-            alt="Loading..."
-            style={{
-                width: '200px',
-                margin: 'auto',
-                display: 'block',
-            }}
-        />
-    </>
+    <div className="spinner-overlay">
+        <div className="spinner" />
+    </div>
 );
 
 export default Spinner;

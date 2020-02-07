@@ -16,3 +16,10 @@
     background-color: var(--color-white-alternate);
     grid-gap: var(--grid-gap);
 }
+
+.user-section-1 {
+    & > * {
+        margin: 2rem 0;
+        padding: 2rem;
+    }
+}

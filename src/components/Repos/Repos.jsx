@@ -1,14 +1,14 @@
 import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ReposContext } from 'context';
+import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
 import { RepoItem } from 'components';
 import './ReposStyles.scss';
 
 const Repos = ({ match }) => {
-    const reposContext = useContext(ReposContext);
-    const { repos, getRepos } = reposContext;
+    const gitHubContext = useContext(GitHubContext);
+    const { repos, getRepos } = gitHubContext;
 
     useEffect(() => {
         getRepos(match.params.login);

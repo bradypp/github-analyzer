@@ -10,13 +10,13 @@ import Octicon, {
     Link,
     MarkGithub,
 } from '@primer/octicons-react';
-import { UserInfoContext } from 'context';
+import { GitHubContext } from 'context';
 import { Spinner } from 'components';
 import './UserInfoStyles.scss';
 
 const UserInfo = ({ match }) => {
-    const userInfoContext = useContext(UserInfoContext);
-    const { user, loading, getUser } = userInfoContext;
+    const gitHubContext = useContext(GitHubContext);
+    const { user, loading, getUser } = gitHubContext;
 
     useEffect(() => {
         getUser(match.params.login);

@@ -35,10 +35,10 @@ const Home = ({ history }) => {
                         value={searchText}
                         onChange={onChange}
                     />
-                    <button type="submit" className="home__form__submit">
-                        <FontAwesomeIcon icon={faSearch} size="6x" />
-                    </button>
                 </label>
+                <button type="submit" className="home__form__submit">
+                    <FontAwesomeIcon icon={faSearch} size="6x" />
+                </button>
             </form>
         </div>
     );

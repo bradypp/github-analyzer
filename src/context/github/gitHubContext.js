@@ -6,7 +6,7 @@ import {
     SET_USER_LOADING,
     GET_REPOS,
     SET_REPOS_LOADING,
-    GET_STATS,
+    SET_STATS,
     SET_STATS_LOADING,
 } from '../actionTypes';
 
@@ -29,7 +29,7 @@ export const GitHubState = ({ children }) => {
         userLoading: false,
         repos: [],
         reposLoading: false,
-        stats: {},
+        stats: { stars: 0 },
         statsLoading: false,
     };
 
@@ -60,21 +60,10 @@ export const GitHubState = ({ children }) => {
         });
     };
 
-    const getStats = () => {
-        setLoading(SET_STATS_LOADING);
-        // const user = new GhPolyglot(username);
-        // user.userStats((err, stats) => {
-        //     if (err) {
-        //         console.log('Error:', err);
-        //     }
-        // });
-        const stars = Intl.NumberFormat().format(
-            state.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)
-        );
-
+    const setStats = stars => {
         dispatch({
-            type: GET_STATS,
-            payload: { stars },
+            type: SET_STATS,
+            payload: { stars: Intl.NumberFormat().format(stars) },
         });
     };
 
@@ -96,10 +85,9 @@ export const GitHubState = ({ children }) => {
                 repos: state.repos,
                 reposLoading: state.reposLoading,
                 stats: state.stats,
-                statsLoading: state.statsLoading,
                 getUser,
                 getRepos,
-                getStats,
+                setStats,
             }}>
             {children}
         </GitHubContext.Provider>

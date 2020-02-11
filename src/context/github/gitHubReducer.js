@@ -3,7 +3,7 @@ import {
     SET_USER_LOADING,
     GET_REPOS,
     SET_REPOS_LOADING,
-    GET_STATS,
+    SET_STATS,
     SET_STATS_LOADING,
 } from '../actionTypes';
 
@@ -32,7 +32,7 @@ export default (state, { type, payload }) => {
                 ...state,
                 reposLoading: true,
             };
-        case GET_STATS: {
+        case SET_STATS: {
             return {
                 ...state,
                 stats: payload,

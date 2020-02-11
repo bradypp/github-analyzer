@@ -8,7 +8,7 @@ import './ReposStyles.scss';
 
 const Repos = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { repos, loading, getRepos } = gitHubContext;
+    const { repos, reposLoading, getRepos } = gitHubContext;
 
     useEffect(() => {
         getRepos(match.params.login);
@@ -17,7 +17,7 @@ const Repos = ({ match }) => {
 
     return (
         <div className="repos">
-            {loading ? (
+            {reposLoading ? (
                 <Spinner />
             ) : (
                 <FlipMove>

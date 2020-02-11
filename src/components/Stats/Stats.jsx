@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useContext } from 'react';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import Octicon from '@primer/octicons-react';
 import { GitHubContext } from 'context';
@@ -9,14 +9,41 @@ import './StatsStyles.scss';
 
 const Stats = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { loading } = gitHubContext;
+    const { user, userLoading, reposLoading, statsLoading, stats, getStats } = gitHubContext;
 
-    // useEffect(() => {
-    //     getStats(match.params.login);
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [match.params.login]);
+    const { public_repos, public_gists, followers, following } = user;
+    const { stars } = stats;
 
-    return <div className="stats">{loading ? <Spinner /> : <p>Stats</p>}</div>;
+    useEffect(() => {
+        // if (userLoading || reposLoading) return;
+        getStats(match.params.login);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [match.params.login, userLoading, reposLoading]);
+
+    return (
+        <div className="stats">
+            {statsLoading ? (
+                <Spinner />
+            ) : (
+                <>
+                    <ul className="stats__user-stats">
+                        <li>Followers: {followers}</li>
+                        <li>Following: {following}</li>
+                        <li>Repos: {public_repos}</li>
+                        <li>Gists: {public_gists}</li>
+                        <li>Stars: {stars}</li>
+                    </ul>
+                    <div className="stats__charts"></div>
+                </>
+            )}
+        </div>
+    );
 };
 
-export default Stats;
+Stats.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.objectOf(PropTypes.string),
+    }).isRequired,
+};
+
+export default withRouter(Stats);

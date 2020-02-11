@@ -16,7 +16,7 @@ import './UserInfoStyles.scss';
 
 const UserInfo = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { user, loading, getUser } = gitHubContext;
+    const { user, userLoading, getUser } = gitHubContext;
 
     useEffect(() => {
         getUser(match.params.login);
@@ -34,15 +34,11 @@ const UserInfo = ({ match }) => {
         email,
         blog,
         created_at,
-        public_repos,
-        public_gists,
-        followers,
-        following,
     } = user;
 
     return (
         <div className="user-info">
-            {loading ? (
+            {userLoading ? (
                 <Spinner />
             ) : (
                 <>

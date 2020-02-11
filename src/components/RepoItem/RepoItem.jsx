@@ -124,7 +124,7 @@ RepoItem.propTypes = {
         html_url: PropTypes.string.isRequired,
         created_at: PropTypes.string.isRequired,
         updated_at: PropTypes.string.isRequired,
-        language: PropTypes.string.isRequired,
+        language: PropTypes.string,
         size: PropTypes.number.isRequired,
         forks_count: PropTypes.number.isRequired,
         stargazers_count: PropTypes.number.isRequired,

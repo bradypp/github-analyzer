@@ -29,7 +29,7 @@ export const GitHubState = ({ children }) => {
         userLoading: false,
         repos: [],
         reposLoading: false,
-        stats: { stars: 0 },
+        stats: { totalStars: 0, languages: [] },
         statsLoading: false,
     };
 
@@ -60,21 +60,50 @@ export const GitHubState = ({ children }) => {
         });
     };
 
-    const setStats = stars => {
+    const setStats = () => {
+        const { repos, userLoading, reposLoading } = state;
+
+        setLoading(SET_STATS_LOADING);
+
+        if (userLoading || reposLoading) return;
+
+        let totalStars = 0;
+        const languages = [];
+
+        // Get top repos by total stars
+        const topRepos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 10);
+
+        // Get total stars and language data from repos
+        repos.forEach(repo => {
+            const { language } = repo;
+            const languageObj = languages.find(el => el.language === language);
+
+            if (languageObj) {
+                const index = languages.indexOf(languageObj);
+                languages[index] = {
+                    ...languageObj,
+                    count: languageObj.count + 1,
+                    stars: languageObj.stars + repo.stargazers_count,
+                };
+            } else {
+                languages.push({ language, count: 1, stars: repo.stargazers_count });
+            }
+
+            totalStars += repo.stargazers_count;
+        });
+
         dispatch({
             type: SET_STATS,
-            payload: { stars: Intl.NumberFormat().format(stars) },
+            payload: {
+                totalStars: Intl.NumberFormat().format(totalStars),
+                topRepos,
+                languages,
+            },
         });
     };
 
     const setLoading = type => {
-        if (type === SET_USER_LOADING) {
-            dispatch({ type });
-        } else if (type === SET_REPOS_LOADING) {
-            dispatch({ type });
-        } else if (type === SET_STATS_LOADING) {
-            dispatch({ type });
-        }
+        dispatch({ type });
     };
 
     return (

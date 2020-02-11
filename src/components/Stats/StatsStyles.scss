@@ -1,3 +1,11 @@
 .stats {
     grid-column: col-start 5 / center-end;
+
+    &__user-stats {
+        display: flex;
+
+        li {
+            margin: 1rem;
+        }
+    }
 }

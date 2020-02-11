@@ -9,42 +9,31 @@ import './StatsStyles.scss';
 
 const Stats = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { user, userLoading, repos, reposLoading, stats, setStats } = gitHubContext;
+    const { user, userLoading, repos, reposLoading, statsLoading, stats, setStats } = gitHubContext;
 
     const { public_repos, public_gists, followers, following } = user;
-    const { stars } = stats;
+    const { totalStars, topRepos, languages } = stats;
 
-    const getStats = () => {
-        let stars = 0;
-
-        // TODO: use the below loop to get all the data you need from the repos
-        repos.forEach(repo => {
-            stars += repo.stargazers_count;
-        });
-
-        setStats(stars);
-    };
+    // TODO: Wrap the following into a promise so that all data is loaded before re-rendering?
 
     useEffect(() => {
-        if (userLoading || reposLoading) return;
-
-        getStats();
+        setStats();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.params.login, userLoading, reposLoading]);
 
     return (
         <div className="stats">
-            {userLoading || reposLoading ? (
+            {statsLoading || userLoading || reposLoading ? (
                 <Spinner />
             ) : (
                 <>
                     <ul className="stats__user-stats">
-                        {/* TODO: loop through a stat item for below */}
+                        {/* TODO: Styling for the below list */}
                         <li>Followers: {followers}</li>
                         <li>Following: {following}</li>
                         <li>Repos: {public_repos}</li>
                         <li>Gists: {public_gists}</li>
-                        <li>Stars: {stars}</li>
+                        <li>Stars: {totalStars}</li>
                     </ul>
                     <div className="stats__charts"></div>
                 </>

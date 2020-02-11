@@ -1,0 +1,19 @@
+.user {
+    display: grid;
+    grid-template-columns:
+        [full-start] minmax(6rem, 1fr) [center-start] repeat(
+            var(--number-of-columns),
+            [col-start] minmax(min-content, calc(var(--grid-width) / var(--number-of-columns)))
+                [col-end]
+        )
+        [center-end] minmax(6rem, 1fr) [full-end];
+    background-color: var(--color-white-alternate);
+    grid-gap: var(--grid-gap);
+
+    &__section-1 {
+        & > * {
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+    }
+}

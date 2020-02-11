@@ -4,11 +4,12 @@ import './UserStyles.scss';
 
 const User = () => (
     <>
-        <div className="container user-section-1">
+        <div className="user user__section-1">
             <UserInfo />
             <Stats />
         </div>
-        <div className="container user-section-2">
+
+        <div className="user user__section-2">
             <Repos />
         </div>
     </>

@@ -29,7 +29,7 @@ export const GitHubState = ({ children }) => {
         userLoading: false,
         repos: [],
         reposLoading: false,
-        stats: [],
+        stats: {},
         statsLoading: false,
     };
 
@@ -96,7 +96,7 @@ export const GitHubState = ({ children }) => {
                 repos: state.repos,
                 reposLoading: state.reposLoading,
                 stats: state.stats,
-                statsLoading: state.stats,
+                statsLoading: state.statsLoading,
                 getUser,
                 getRepos,
                 getStats,

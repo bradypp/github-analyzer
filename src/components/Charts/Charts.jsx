@@ -6,8 +6,9 @@ import './ChartsStyles.scss';
 
 const Charts = () => {
     const gitHubContext = useContext(GitHubContext);
-    const { stats, statsLoading, userLoading, reposLoading } = gitHubContext;
-    const { topRepos, languageData } = stats;
+    const {
+        stats: { topRepos, languageData },
+    } = gitHubContext;
 
     const [topLanguagesChartData, setTopLanguagesChartData] = useState(null);
 
@@ -60,21 +61,17 @@ const Charts = () => {
         if (!languageData || !topRepos) return;
         initTopLanguagesChart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stats]);
+    }, [topRepos, languageData]);
 
     const chartSize = 300;
     return (
         <div className="charts">
-            {statsLoading || userLoading || reposLoading ? (
-                <Spinner />
-            ) : (
-                <div className="charts__chart">
-                    <h2>Top Languages</h2>
-                    <div className="charts__chart-container">
-                        <canvas id="topLanguagesChart" width={chartSize} height={chartSize} />
-                    </div>
+            <div className="charts__chart">
+                <h2 className="charts__chart__heading">Top Languages</h2>
+                <div className="charts__chart__container">
+                    <canvas id="topLanguagesChart" width={chartSize} height={chartSize} />
                 </div>
-            )}
+            </div>
         </div>
     );
 };

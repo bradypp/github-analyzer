@@ -28,7 +28,7 @@ const buildLegend = legend => {
     const leg = {
         position: 'right',
         labels: {
-            fontFamily: 'sans-serif',
+            fontFamily: "'Lato', sans-serif",
         },
     };
     return legend ? leg : null;
@@ -48,7 +48,7 @@ const buildChart = config => {
                     data,
                     backgroundColor,
                     borderColor,
-                    borderWidth: 1,
+                    borderWidth: 2,
                 },
             ],
         },

@@ -13,8 +13,8 @@ import Octicon, {
 } from '@primer/octicons-react';
 import './ReposItemStyles.scss';
 
-const RepoItem = ({ repo }) => {
-    const {
+const RepoItem = ({
+    repo: {
         name,
         description,
         html_url,
@@ -26,8 +26,8 @@ const RepoItem = ({ repo }) => {
         watchers_count,
         language,
         open_issues_count,
-    } = repo;
-
+    },
+}) => {
     const calculateSize = () => {
         if (size > 1000) {
             return `${size / 1000} MB`;

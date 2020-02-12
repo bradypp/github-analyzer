@@ -16,25 +16,27 @@ import './UserInfoStyles.scss';
 
 const UserInfo = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { user, userLoading, getUser } = gitHubContext;
+    const {
+        user: {
+            avatar_url,
+            html_url,
+            name,
+            login,
+            bio,
+            company,
+            location,
+            email,
+            blog,
+            created_at,
+        },
+        userLoading,
+        getUser,
+    } = gitHubContext;
 
     useEffect(() => {
         getUser(match.params.login);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match.params.login]);
-
-    const {
-        avatar_url,
-        html_url,
-        name,
-        login,
-        bio,
-        company,
-        location,
-        email,
-        blog,
-        created_at,
-    } = user;
 
     return (
         <div className="user-info">

@@ -1,0 +1,14 @@
+.charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2rem;
+
+    &__chart {
+        grid-column: 1/1;
+        &__container {
+        }
+
+        &__heading {
+        }
+    }
+}

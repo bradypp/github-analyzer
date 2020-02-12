@@ -9,12 +9,14 @@ import './StatsStyles.scss';
 
 const Stats = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { user, userLoading, reposLoading, statsLoading, stats, setStats } = gitHubContext;
-
-    const { public_repos, public_gists, followers, following } = user;
-    const { totalStars } = stats;
-
-    // TODO: Wrap the following into a promise so that all data is loaded before re-rendering?
+    const {
+        user: { public_repos, public_gists, followers, following },
+        stats: { totalStars },
+        userLoading,
+        reposLoading,
+        statsLoading,
+        setStats,
+    } = gitHubContext;
 
     useEffect(() => {
         setStats();
@@ -35,9 +37,7 @@ const Stats = ({ match }) => {
                         <li>Gists: {public_gists}</li>
                         <li>Stars: {totalStars}</li>
                     </ul>
-                    <div className="stats__charts">
-                        <Charts />
-                    </div>
+                    <Charts />
                 </>
             )}
         </div>

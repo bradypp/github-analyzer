@@ -28,7 +28,7 @@ const buildLegend = legend => {
     const leg = {
         position: 'right',
         labels: {
-            fontFamily: "'Lato', sans-serif",
+            fontFamily: 'sans-serif',
         },
     };
     return legend ? leg : null;

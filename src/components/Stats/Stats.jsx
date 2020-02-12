@@ -4,15 +4,15 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import Octicon from '@primer/octicons-react';
 import { GitHubContext } from 'context';
-import { Spinner } from 'components';
+import { Spinner, Charts } from 'components';
 import './StatsStyles.scss';
 
 const Stats = ({ match }) => {
     const gitHubContext = useContext(GitHubContext);
-    const { user, userLoading, repos, reposLoading, statsLoading, stats, setStats } = gitHubContext;
+    const { user, userLoading, reposLoading, statsLoading, stats, setStats } = gitHubContext;
 
     const { public_repos, public_gists, followers, following } = user;
-    const { totalStars, topRepos, languages } = stats;
+    const { totalStars } = stats;
 
     // TODO: Wrap the following into a promise so that all data is loaded before re-rendering?
 
@@ -35,7 +35,9 @@ const Stats = ({ match }) => {
                         <li>Gists: {public_gists}</li>
                         <li>Stars: {totalStars}</li>
                     </ul>
-                    <div className="stats__charts"></div>
+                    <div className="stats__charts">
+                        <Charts />
+                    </div>
                 </>
             )}
         </div>

@@ -3,9 +3,12 @@
 
     &__user-stats {
         display: flex;
+        align-items: center;
+        justify-content: center;
 
         li {
-            margin: 1rem;
+            margin-right: 1rem;
+            padding: 2rem;
         }
     }
 }

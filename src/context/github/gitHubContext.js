@@ -1,5 +1,6 @@
 import React, { useReducer, createContext } from 'react';
 import axios from 'axios';
+import { getTopRepos, getTotalStars, getLanguageData } from 'context/github/getStatsData';
 import GitHubReducer from './gitHubReducer';
 import {
     GET_USER,
@@ -29,7 +30,7 @@ export const GitHubState = ({ children }) => {
         userLoading: false,
         repos: [],
         reposLoading: false,
-        stats: { totalStars: 0, languages: [] },
+        stats: {},
         statsLoading: false,
     };
 
@@ -61,50 +62,25 @@ export const GitHubState = ({ children }) => {
     };
 
     const setStats = () => {
-        const { repos, userLoading, reposLoading } = state;
-
         setLoading(SET_STATS_LOADING);
+
+        const { repos, reposLoading, userLoading } = state;
 
         if (userLoading || reposLoading) return;
 
-        let totalStars = 0;
-        const languages = [];
-
-        // Get top repos by total stars
-        const topRepos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 10);
-
-        // Get total stars and language data from repos
-        repos.forEach(repo => {
-            const { language } = repo;
-            const languageObj = languages.find(el => el.language === language);
-
-            if (languageObj) {
-                const index = languages.indexOf(languageObj);
-                languages[index] = {
-                    ...languageObj,
-                    count: languageObj.count + 1,
-                    stars: languageObj.stars + repo.stargazers_count,
-                };
-            } else {
-                languages.push({ language, count: 1, stars: repo.stargazers_count });
-            }
-
-            totalStars += repo.stargazers_count;
-        });
+        const stats = {
+            totalStars: getTotalStars(repos),
+            topRepos: getTopRepos(repos),
+            languageData: getLanguageData(repos),
+        };
 
         dispatch({
             type: SET_STATS,
-            payload: {
-                totalStars: Intl.NumberFormat().format(totalStars),
-                topRepos,
-                languages,
-            },
+            payload: stats,
         });
     };
 
-    const setLoading = type => {
-        dispatch({ type });
-    };
+    const setLoading = type => dispatch({ type });
 
     return (
         <GitHubContext.Provider

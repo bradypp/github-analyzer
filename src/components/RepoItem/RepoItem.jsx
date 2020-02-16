@@ -39,14 +39,13 @@ const RepoItem = ({
         <a href={html_url} target="_blank" rel="noopener noreferrer" className="repo-github-url">
             <li className="repo-item">
                 <div className="repo-item__name">
-                    <Octicon className="repo-item__name__octicon" icon={Repo} />
+                    <Octicon icon={Repo} />
                     <h3>{name}</h3>
                 </div>
                 {description && <p className="repo-item__description">{description}</p>}
                 <div className="repo-item__attributes repo-item__attributes--1">
                     <div className="repo-item__attributes__created_at">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={Calendar}
                             size="small"
                         />
@@ -58,7 +57,6 @@ const RepoItem = ({
                     </div>
                     <div className="repo-item__attributes__updated_at">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={Sync}
                             size="small"
                         />
@@ -72,7 +70,6 @@ const RepoItem = ({
                 <div className="repo-item__attributes repo-item__attributes--2">
                     <div className="repo-item__attributes__language">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={Browser}
                             size="small"
                         />
@@ -80,7 +77,6 @@ const RepoItem = ({
                     </div>
                     <div className="repo-item__attributes__stars">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={Star}
                             size="small"
                         />
@@ -88,7 +84,6 @@ const RepoItem = ({
                     </div>
                     <div className="repo-item__attributes__forks">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={RepoForked}
                             size="small"
                         />
@@ -96,7 +91,6 @@ const RepoItem = ({
                     </div>
                     <div className="repo-item__attributes__issues">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={IssueOpened}
                             size="small"
                         />
@@ -104,7 +98,6 @@ const RepoItem = ({
                     </div>
                     <div className="repo-item__attributes__watching">
                         <Octicon
-                            className="repo-item__attributes__octicon"
                             icon={Eye}
                             size="small"
                         />

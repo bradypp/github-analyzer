@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { GitHubContext } from 'context';
+
 import Octicon, { MarkGithub } from '@primer/octicons-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './HomeStyles.scss';
 
 const Home = ({ history }) => {
+    const { resetState } = useContext(GitHubContext);
     const [searchText, setSearchText] = useState('');
 
     const onChange = event => setSearchText(event.target.value);
@@ -18,6 +21,10 @@ const Home = ({ history }) => {
             setSearchText('');
         }
     };
+
+    useEffect(() => {
+        resetState();
+    }, [resetState]);
 
     return (
         // Search for a user

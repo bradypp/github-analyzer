@@ -9,6 +9,7 @@ import {
     SET_REPOS_LOADING,
     SET_STATS,
     SET_STATS_LOADING,
+    RESET_STATE,
 } from '../actionTypes';
 
 let githubClientId;
@@ -85,6 +86,10 @@ export const GitHubState = ({ children }) => {
 
     const setLoading = type => dispatch({ type });
 
+    const resetState = () => {
+        dispatch({ type: RESET_STATE, payload: initialState });
+    };
+
     return (
         <GitHubContext.Provider
             value={{
@@ -96,6 +101,7 @@ export const GitHubState = ({ children }) => {
                 getUser,
                 getRepos,
                 setStats,
+                resetState,
             }}>
             {children}
         </GitHubContext.Provider>

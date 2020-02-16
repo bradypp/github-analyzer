@@ -20,7 +20,6 @@ import { Spinner } from 'components';
 import './UserInfoStyles.scss';
 
 const UserInfo = ({ match }) => {
-    const gitHubContext = useContext(GitHubContext);
     const {
         user: {
             avatar_url,
@@ -41,7 +40,7 @@ const UserInfo = ({ match }) => {
         stats: { totalStars },
         userLoading,
         getUser,
-    } = gitHubContext;
+    } = useContext(GitHubContext);
 
     useEffect(() => {
         getUser(match.params.login);

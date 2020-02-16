@@ -18,13 +18,16 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
         const maxLanguages = 8;
         const topLanguages = sortedLanguages.slice(0, maxLanguages);
         const otherLanguages = sortedLanguages.slice(maxLanguages, -1);
-        const other = {
-            language: 'Other',
-            count: otherLanguages.reduce((acc, language) => acc + language.count, 0),
-            stars: otherLanguages.reduce((acc, language) => acc + language.stars, 0),
-            color: '#dbdbdb',
-        };
-        topLanguages.push(other);
+        if (otherLanguages.length > 0) {
+            const other = {
+                language: 'Other',
+                count: otherLanguages.reduce((acc, language) => acc + language.count, 0),
+                stars: otherLanguages.reduce((acc, language) => acc + language.stars, 0),
+                color: '#dbdbdb',
+            };
+
+            topLanguages.push(other);
+        }
 
         const labels = topLanguages.map(el => el.language);
         const data = topLanguages.map(el => el.count);

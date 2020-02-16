@@ -11,10 +11,16 @@
         margin-bottom: 1px;
     }
 
-    &__top {
-        border-bottom: var(--line);
-        padding-bottom: 1.5rem;
+    & > *:not(:first-child) {
+        padding-top: 1.2rem;
+    }
 
+    & > *:not(:last-child) {
+        padding-bottom: 1.2rem;
+        border-bottom: var(--line);
+    }
+
+    &__top {
         svg {
             color: var(--color-grey-dark-3);
             margin-right: 0.6rem;
@@ -39,16 +45,17 @@
         }
     }
 
-    &__items {
-        padding: 1.5rem 0;
+    &__items,
+    &__stats {
+        // padding-top: 1.5rem;
 
-        &__item {
+        li {
             font-size: 1.6rem;
             display: flex;
             align-items: center;
 
             &:not(:last-child) {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.4rem;
             }
         }
     }

@@ -9,6 +9,11 @@ import Octicon, {
     Location,
     Link,
     MarkGithub,
+    Octoface,
+    Organization,
+    Repo,
+    Gist,
+    Star,
 } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import { Spinner } from 'components';
@@ -28,7 +33,12 @@ const UserInfo = ({ match }) => {
             email,
             blog,
             created_at,
+            public_repos,
+            public_gists,
+            followers,
+            following,
         },
+        stats: { totalStars },
         userLoading,
         getUser,
     } = gitHubContext;
@@ -45,94 +55,85 @@ const UserInfo = ({ match }) => {
             ) : (
                 <>
                     <div className="user-info__top">
-                        {avatar_url && (
-                            <a href={html_url} target="_blank" rel="noopener noreferrer">
-                                <img
-                                    className="user-info__top__img"
-                                    src={avatar_url}
-                                    alt="User Avatar"
-                                />
-                            </a>
-                        )}
-
-                        {name && <h1 className="user-info__top__name">{name}</h1>}
-
-                        {login && (
-                            <a
-                                href={html_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="user-info__top__login">
-                                <Octicon
-                                    className="user-info__top__octicon"
-                                    icon={MarkGithub}
-                                    size="small"
-                                />
-                                {login}
-                            </a>
-                        )}
+                        <a href={html_url} target="_blank" rel="noopener noreferrer">
+                            <img
+                                className="user-info__top__img"
+                                src={avatar_url}
+                                alt="User Avatar"
+                            />
+                        </a>
+                        <h1 className="user-info__top__name">{name}</h1>
+                        <a
+                            href={html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="user-info__top__login">
+                            <Octicon icon={MarkGithub} size="small" />
+                            {login}
+                        </a>
                         {bio && <div className="user-info__top__bio">{bio}</div>}
                     </div>
 
-                    <div className="user-info__items">
+                    <ul className="user-info__items">
                         {company && (
-                            <div className="user-info__items__item">
-                                <Octicon
-                                    className="user-info__items__octicon"
-                                    icon={Briefcase}
-                                    size="small"
-                                />
+                            <li>
+                                <Octicon icon={Briefcase} size="small" />
                                 {company}
-                            </div>
+                            </li>
                         )}
                         {location && (
-                            <div className="user-info__items__item">
-                                <Octicon
-                                    className="user-info__items__octicon"
-                                    icon={Location}
-                                    size="small"
-                                />
+                            <li>
+                                <Octicon icon={Location} size="small" />
                                 {location}
-                            </div>
+                            </li>
                         )}
                         {email && (
-                            <div className="user-info__items__item">
-                                <Octicon
-                                    className="user-info__items__octicon"
-                                    icon={Mail}
-                                    size="small"
-                                />
+                            <li>
+                                <Octicon icon={Mail} size="small" />
                                 {email}
-                            </div>
+                            </li>
                         )}
                         {blog && (
-                            <div className="user-info__items__item">
-                                <Octicon
-                                    className="user-info__items__octicon"
-                                    icon={Link}
-                                    size="small"
-                                />
+                            <li>
+                                <Octicon icon={Link} size="small" />
                                 <a href={blog} target="_blank" rel="noopener noreferrer">
                                     {blog}
                                 </a>
-                            </div>
+                            </li>
                         )}
-                        {created_at && (
-                            <div className="user-info__items__item">
-                                <Octicon
-                                    className="user-info__items__octicon"
-                                    icon={Calendar}
-                                    size="small"
-                                />
-                                Joined{' '}
-                                {new Date(created_at).toLocaleDateString('en-UK', {
-                                    day: 'numeric',
-                                    month: 'long',
-                                    year: 'numeric',
-                                })}
-                            </div>
-                        )}
-                    </div>
+                        <li>
+                            <Octicon icon={Calendar} size="small" />
+                            Joined{' '}
+                            {new Date(created_at).toLocaleDateString('en-UK', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                            })}
+                        </li>
+                    </ul>
+
+                    <ul className="user-info__stats">
+                        <li>
+                            <Octicon icon={Octoface} size="small" />
+                            Followers: {followers}
+                        </li>
+                        <li>
+                            <Octicon icon={Organization} size="small" />
+                            Following: {following}
+                        </li>
+                        <li>
+                            <Octicon icon={Repo} size="small" />
+                            Total Repos: {public_repos}
+                        </li>
+                        <li>
+                            <Octicon icon={Gist} size="small" />
+                            Total Gists: {public_gists}
+                        </li>
+                        <li>
+                            <Octicon icon={Star} size="small" />
+                            Total Stars: {totalStars}
+                        </li>
+                    </ul>
                 </>
             )}
         </div>

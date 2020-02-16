@@ -33,8 +33,7 @@
 
         &__input {
             height: 5rem;
-            width: 25vw;
-            min-width: 40rem;
+            width: 65rem;
             height: 8rem;
             margin-top: 2rem;
             padding: 1rem;
@@ -64,7 +63,7 @@
                 background-color: var(--color-black-dark);
 
                 &::placeholder {
-                    visibility: hidden;
+                    opacity: 0;
                 }
             }
         }

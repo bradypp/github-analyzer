@@ -14,7 +14,7 @@ export const getTotalStars = repos =>
     );
 
 export const getLanguageData = repos => {
-    const languages = [];
+    const languageData = [];
     const languageColorsKeys = Object.keys(languageColors);
     const languageColorsValues = Object.values(languageColors);
 
@@ -27,17 +27,17 @@ export const getLanguageData = repos => {
         })
         .forEach(repo => {
             const { language } = repo;
-            const languageObj = languages.find(el => el.language === language);
+            const languageObj = languageData.find(el => el.language === language);
 
             if (languageObj) {
-                const index = languages.indexOf(languageObj);
-                languages[index] = {
+                const index = languageData.indexOf(languageObj);
+                languageData[index] = {
                     ...languageObj,
                     count: languageObj.count + 1,
                     stars: languageObj.stars + repo.stargazers_count,
                 };
             } else {
-                languages.push({
+                languageData.push({
                     language,
                     count: 1,
                     stars: repo.stargazers_count,
@@ -46,5 +46,5 @@ export const getLanguageData = repos => {
                 });
             }
         });
-    return languages;
+    return languageData;
 };

@@ -5,7 +5,7 @@ const buildScales = axes => {
         xAxes: [
             {
                 ticks: {
-                    fontFamily: "'Lato', sans-serif",
+                    fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
                 },
             },
@@ -14,7 +14,7 @@ const buildScales = axes => {
             {
                 ticks: {
                     beginAtZero: true,
-                    fontFamily: "'Lato', sans-serif",
+                    fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
                 },
             },
@@ -26,9 +26,9 @@ const buildScales = axes => {
 
 const buildLegend = legend => {
     const leg = {
-        position: 'right',
+        position: 'bottom',
         labels: {
-            fontFamily: "'Lato', sans-serif",
+            fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
         },
     };
     return legend ? leg : null;
@@ -40,7 +40,7 @@ const buildChart = config => {
     return new Chart(ctx, {
         type: chartType,
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         data: {
             labels,
             datasets: [
@@ -56,8 +56,6 @@ const buildChart = config => {
             scales: buildScales(axes),
             legend: buildLegend(legend),
             tooltips: {
-                // titleFontFamily: fonts.inter,
-                // bodyFontFamily: fonts.inter,
                 cornerRadius: 3,
             },
         },

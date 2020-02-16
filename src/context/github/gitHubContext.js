@@ -30,7 +30,11 @@ export const GitHubState = ({ children }) => {
         userLoading: false,
         repos: [],
         reposLoading: false,
-        stats: {},
+        stats: {
+            totalStars: 0,
+            topRepos: [],
+            languageData: [],
+        },
         statsLoading: false,
     };
 
@@ -73,7 +77,6 @@ export const GitHubState = ({ children }) => {
             topRepos: getTopRepos(repos),
             languageData: getLanguageData(repos),
         };
-
         dispatch({
             type: SET_STATS,
             payload: stats,

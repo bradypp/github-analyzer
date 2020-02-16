@@ -1,14 +1,19 @@
 .charts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
     grid-gap: 2rem;
 
     &__chart {
-        grid-column: 1/1;
+        padding: 2rem;
+
         &__container {
         }
 
         &__heading {
+            display: inline-block;
+            margin-bottom: 2rem;
+            border-bottom: var(--dashed-line);
+            font-size: 2.2rem;
         }
     }
 }

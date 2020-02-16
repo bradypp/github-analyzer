@@ -25,7 +25,7 @@
             display: flex;
             flex-direction: column;
             font-size: 4rem;
-            font-weight: 500;
+            font-weight: 400;
             margin-bottom: 3.5rem;
             color: var(--color-primary-light);
             align-items: center;
@@ -38,19 +38,23 @@
             height: 8rem;
             margin-top: 2rem;
             padding: 1rem;
-            font-size: 3.2rem;
-            font-weight: 400;
+            font-size: 3rem;
             text-align: center;
             background-color: var(--color-primary-dark-2);
             border-bottom: 3px solid var(--color-primary-dark-2);
+            font-family: var(--mono-font-family);
+            font-weight: 500;
             outline: 0;
             border: 0;
             color: var(--color-primary-light);
             transition: all 0.3s;
 
             &::placeholder {
+                font-family: var(--mono-font-family);
+                font-weight: 500;
+
                 color: var(--color-primary-light);
-                font-size: 3rem;
+                font-size: 2.8rem;
                 opacity: 0.5;
             }
 
@@ -75,7 +79,6 @@
             font-size: 0.4rem;
             width: 15rem;
             height: 6rem;
-            font-weight: 500;
             letter-spacing: 0.5px;
             // margin-top: 3rem;
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) 0s;

@@ -25,9 +25,10 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         color: var(--color-grey-dark-3);
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 1.5rem;
+        font-weight: 400;
         letter-spacing: -0.5px;
+        font-family: var(--mono-font-family);
 
         &__octicon {
             max-width: 16px;

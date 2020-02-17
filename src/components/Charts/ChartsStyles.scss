@@ -1,11 +1,9 @@
 .charts {
     grid-column: col-start 5 / center-end;
     display: flex;
-    align-content: center;
     flex-wrap: wrap;
     // grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
     // grid-gap: 2rem;
-
     &__chart {
         padding: 2rem;
         // flex: 0 1 1fr;
@@ -13,6 +11,7 @@
         canvas {
             width: 40rem;
         }
+
         &__container {
         }
 

@@ -1,7 +1,7 @@
 import { languageColors } from 'utils';
 
 export const getTopRepos = repos => {
-    const LIMIT = 10;
+    const LIMIT = 8;
     return repos
         .filter(repo => !repo.fork)
         .sort((a, b) => b.stargazers_count - a.stargazers_count)

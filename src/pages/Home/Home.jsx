@@ -24,7 +24,7 @@ const Home = ({ history }) => {
 
     useEffect(() => {
         resetState();
-    }, [resetState]);
+    }, []);
 
     return (
         // Search for a user

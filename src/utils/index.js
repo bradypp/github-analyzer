@@ -11,7 +11,7 @@ const backgroundColor = [
     'rgba(169, 231, 131, 0.7)',
     'rgba(53, 114, 165, 0.7)',
     'rgba(86, 61, 124, 0.7)',
-    'rgba(75, 192, 192, 0.7)',
+    'rgba(255, 206, 86, 0.7)',
 ];
 const borderColor = [
     'rgba(255, 92, 92, 1)',
@@ -23,7 +23,7 @@ const borderColor = [
     'rgba(169, 231, 131, 1)',
     'rgba(53, 114, 165, 1)',
     'rgba(86, 61, 124, 1)',
-    'rgba(75, 192, 192, 1)',
+    'rgba(255, 206, 86, 1)',
 ];
 
 export { languageColors, backgroundColor, borderColor, buildChart };

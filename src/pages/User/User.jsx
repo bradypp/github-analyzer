@@ -1,12 +1,12 @@
 import React from 'react';
-import { UserInfo, Repos, Charts } from 'components';
+import { UserInfo, Repos, Stats } from 'components';
 import './UserStyles.scss';
 
 const User = () => (
     <>
         <div className="user user__section-1">
             <UserInfo />
-            <Charts />
+            <Stats />
         </div>
 
         <div className="user user__section-2">

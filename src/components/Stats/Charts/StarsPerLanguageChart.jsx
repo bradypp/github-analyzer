@@ -1,19 +1,18 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { GitHubContext } from 'context';
 import { buildChart } from 'utils';
-import './ChartsStyles.scss';
 
-const TopLanguagesChart = ({ chartSize: { height, width } }) => {
+const StarsPerLanguageChart = ({ chartSize: { height, width } }) => {
     const {
         stats: { languageData },
     } = useContext(GitHubContext);
 
-    const [topLanguagesChartData, setTopLanguagesChartData] = useState(null);
+    // eslint-disable-next-line no-unused-vars
+    const [starsPerLanguageChartData, setStarsPerLanguageChartData] = useState(null);
 
-    // Create most used languages chart
-    const initTopLanguagesChart = () => {
-        const ctx = document.getElementById('topLanguagesChart');
-        const sortedLanguages = languageData.sort((a, b) => b.count - a.count);
+    const initStarsPerLanguageChart = () => {
+        const ctx = document.getElementById('starsPerLanguageChart');
+        const sortedLanguages = languageData.sort((a, b) => b.stars - a.stars);
 
         const maxLanguages = 8;
         const topLanguages = sortedLanguages.slice(0, maxLanguages);
@@ -30,9 +29,9 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
         }
 
         const labels = topLanguages.map(el => el.language);
-        const data = topLanguages.map(el => el.count);
+        const data = topLanguages.map(el => el.stars);
 
-        setTopLanguagesChartData(data);
+        setStarsPerLanguageChartData(data);
 
         if (data.length > 0) {
             const backgroundColor = topLanguages.map(({ color }) =>
@@ -41,7 +40,7 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
                     : `#${color.length > 4 ? color.slice(1) : color.slice(1).repeat(2)}B3`
             );
             const borderColor = topLanguages.map(({ color }) => (!color ? '#bbb' : `${color}`));
-            const chartType = 'pie';
+            const chartType = 'doughnut';
             const axes = false;
             const legend = true;
             const config = {
@@ -59,11 +58,11 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
     };
 
     useEffect(() => {
-        initTopLanguagesChart();
+        initStarsPerLanguageChart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [languageData]);
 
-    return <canvas id="topLanguagesChart" height={height} width={width} />;
+    return <canvas id="starsPerLanguageChart" height={height} width={width} />;
 };
 
-export default TopLanguagesChart;
+export default StarsPerLanguageChart;

@@ -1,6 +1,6 @@
 import React, { useReducer, createContext } from 'react';
 import axios from 'axios';
-import { getTopRepos, getTotalStars, getLanguageData } from 'context/github/getStatsData';
+import { getTopRepos, getTotalStars, getLanguageData } from 'context/github/getData';
 import GitHubReducer from './gitHubReducer';
 import {
     GET_USER,

@@ -9,11 +9,6 @@ import Octicon, {
     Location,
     Link,
     MarkGithub,
-    Octoface,
-    Organization,
-    Repo,
-    Gist,
-    Star,
 } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import { Spinner } from 'components';
@@ -32,12 +27,7 @@ const UserInfo = ({ match }) => {
             email,
             blog,
             created_at,
-            public_repos,
-            public_gists,
-            followers,
-            following,
         },
-        stats: { totalStars },
         userLoading,
         getUser,
     } = useContext(GitHubContext);
@@ -108,29 +98,6 @@ const UserInfo = ({ match }) => {
                                 month: 'long',
                                 year: 'numeric',
                             })}
-                        </li>
-                    </ul>
-
-                    <ul className="user-info__stats">
-                        <li>
-                            <Octicon icon={Octoface} size="small" />
-                            Followers: {followers}
-                        </li>
-                        <li>
-                            <Octicon icon={Organization} size="small" />
-                            Following: {following}
-                        </li>
-                        <li>
-                            <Octicon icon={Repo} size="small" />
-                            Total Repos: {public_repos}
-                        </li>
-                        <li>
-                            <Octicon icon={Gist} size="small" />
-                            Total Gists: {public_gists}
-                        </li>
-                        <li>
-                            <Octicon icon={Star} size="small" />
-                            Total Stars: {totalStars}
                         </li>
                     </ul>
                 </>

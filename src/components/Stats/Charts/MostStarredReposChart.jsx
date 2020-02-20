@@ -1,16 +1,15 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { GitHubContext } from 'context';
 import { buildChart, backgroundColor, borderColor } from 'utils';
-import './ChartsStyles.scss';
 
 const MostStarredReposChart = ({ chartSize: { height, width } }) => {
     const {
         stats: { topRepos },
     } = useContext(GitHubContext);
 
+    // eslint-disable-next-line no-unused-vars
     const [mostStarredReposChartData, setMostStarredReposChartData] = useState(null);
 
-    // Create most starred repos chart
     const initMostStarredReposChart = () => {
         const ctx = document.getElementById('mostStarredReposChart');
 

@@ -1,0 +1,52 @@
+$chart-width: 34rem;
+
+.stats {
+    grid-column: col-start 5 / center-end;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($chart-width, 1fr));
+    grid-template-rows: repeat(auto-fill, min-content);
+    justify-items: center;
+    align-items: center;
+    grid-gap: 2rem;
+
+    &-spinner {
+        grid-column: col-start 5 / center-end;
+    }
+
+    &__chart {
+        &__container {
+            width: $chart-width;
+        }
+
+        &__heading {
+            display: inline-block;
+            margin-bottom: 2rem;
+            border-bottom: var(--dashed-line);
+            font-size: 2.2rem;
+        }
+    }
+
+    &__user {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        svg {
+            width: 16px;
+            margin-bottom: 0.4rem;
+        }
+
+        &__item {
+            font-size: 1.8rem;
+            font-weight: 300;
+            background-color: var(--color-primary-light);
+            margin: 0.6rem;
+            width: 18rem;
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+}

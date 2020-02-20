@@ -7,8 +7,7 @@ import { RepoItem, Spinner } from 'components';
 import './ReposStyles.scss';
 
 const Repos = ({ match }) => {
-    const gitHubContext = useContext(GitHubContext);
-    const { repos, reposLoading, getRepos } = gitHubContext;
+    const { repos, reposLoading, getRepos } = useContext(GitHubContext);
 
     useEffect(() => {
         getRepos(match.params.login);

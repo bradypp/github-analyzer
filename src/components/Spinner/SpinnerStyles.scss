@@ -16,6 +16,14 @@
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
 
+    &--white {
+    }
+
+    &--small {
+        width: 30px;
+        height: 30px;
+    }
+
     @keyframes spin {
         to {
             -webkit-transform: rotate(360deg);

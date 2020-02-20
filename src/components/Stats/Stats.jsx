@@ -65,7 +65,7 @@ const Stats = ({ match }) => {
                         </div>
                         <div className="stats__user__item">
                             <Octicon icon={Megaphone} size="medium" />
-                            Hireable: {hireable ? 'Yes' : 'No'}
+                            Available: {hireable ? 'Yes' : 'No'}
                         </div>
                     </div>
                     <div className="stats__chart">

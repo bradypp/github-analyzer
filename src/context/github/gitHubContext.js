@@ -10,6 +10,7 @@ import {
     SET_STATS,
     SET_STATS_LOADING,
     RESET_STATE,
+    SET_ERROR,
 } from '../actionTypes';
 
 let githubClientId;
@@ -37,33 +38,61 @@ export const GitHubState = ({ children }) => {
             languageData: [],
         },
         statsLoading: false,
+        error: {
+            active: false,
+            type: null,
+            message: '',
+        },
+        test: null,
     };
 
     const [state, dispatch] = useReducer(GitHubReducer, initialState);
 
     const getUser = async username => {
         setLoading(SET_USER_LOADING);
-        const res = await axios.get(
-            `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
-        );
 
-        dispatch({
-            type: GET_USER,
-            payload: res.data,
-        });
+        try {
+            const res = await axios.get(
+                `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`,
+                { validateStatus: false }
+            );
+            if (res.status === 404) {
+                setError(404, 'User not found!');
+            }
+            if (res.status === 403) {
+                setError(403, 'You"ve hit the GitHub api limit!');
+            }
+            dispatch({
+                type: GET_USER,
+                payload: res.data,
+            });
+        } catch (error) {
+            setError(400);
+            console.error('Error:', error);
+        }
     };
 
     const getRepos = async username => {
         setLoading(SET_REPOS_LOADING);
 
-        const res = await axios.get(
-            `https://api.github.com/users/${username}/repos?per_page=100&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
-        );
-
-        dispatch({
-            type: GET_REPOS,
-            payload: res.data,
-        });
+        try {
+            const res = await axios.get(
+                `https://api.github.com/users/${username}/repos?per_page=100&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
+            );
+            if (res.status === 404) {
+                setError(404, `Repos not found for ${username}`);
+            }
+            if (res.status === 403) {
+                setError(403, 'You"ve hit the GitHub api limit!');
+            }
+            dispatch({
+                type: GET_REPOS,
+                payload: res.data,
+            });
+        } catch (error) {
+            setError(400);
+            console.error('Error:', error);
+        }
     };
 
     const setStats = () => {
@@ -90,6 +119,10 @@ export const GitHubState = ({ children }) => {
         dispatch({ type: RESET_STATE, payload: initialState });
     };
 
+    const setError = (type = 400, message = 'Something went wrong!') => {
+        dispatch({ type: SET_ERROR, payload: { active: true, type, message } });
+    };
+
     return (
         <GitHubContext.Provider
             value={{
@@ -98,10 +131,12 @@ export const GitHubState = ({ children }) => {
                 repos: state.repos,
                 reposLoading: state.reposLoading,
                 stats: state.stats,
+                error: state.error,
                 getUser,
                 getRepos,
                 setStats,
                 resetState,
+                setError,
             }}>
             {children}
         </GitHubContext.Provider>

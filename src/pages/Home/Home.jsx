@@ -7,13 +7,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './HomeStyles.scss';
 
 const Home = ({ history }) => {
-    const { resetState } = useContext(GitHubContext);
+    const { resetState, error } = useContext(GitHubContext);
     const [searchText, setSearchText] = useState('');
 
     const onChange = event => setSearchText(event.target.value);
 
     const onSubmit = event => {
         event.preventDefault();
+
         if (searchText === '') {
             alert('Please enter a GitHub username');
         } else {
@@ -33,11 +34,12 @@ const Home = ({ history }) => {
                 <Octicon icon={MarkGithub} size="large" className="home__form__github-icon" />
                 <label htmlFor="username" className="home__form__label">
                     Find a GitHub Profile
+                    {error && <span className="error-message">{error.message}</span>}
                     <input
                         type="text"
                         name="username"
                         id="username"
-                        className="home__form__input"
+                        className={`home__form__input ${error && 'home__form__input--error'}`}
                         placeholder="Enter Username..."
                         value={searchText}
                         onChange={onChange}

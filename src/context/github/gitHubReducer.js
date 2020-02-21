@@ -6,6 +6,7 @@ import {
     SET_STATS,
     SET_STATS_LOADING,
     RESET_STATE,
+    SET_ERROR,
 } from '../actionTypes';
 
 export default (state, { type, payload }) => {
@@ -49,6 +50,11 @@ export default (state, { type, payload }) => {
             return {
                 ...state,
                 state: payload,
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                error: payload,
             };
         default:
             return state;

@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useContext, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
 import { GitHubContext } from 'context';
 import { Spinner } from 'components';
 import Octicon, {
@@ -17,7 +16,7 @@ import MostStarredReposChart from './Charts/MostStarredReposChart';
 import StarsPerLanguageChart from './Charts/StarsPerLanguageChart';
 import './StatsStyles.scss';
 
-const Stats = ({ match }) => {
+const Stats = () => {
     const {
         user: { public_repos, public_gists, followers, following, hireable },
         stats: { totalStars },
@@ -26,11 +25,12 @@ const Stats = ({ match }) => {
         statsLoading,
         setStats,
     } = useContext(GitHubContext);
+    const { username } = useParams();
 
     useEffect(() => {
         setStats();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match.params.login, userLoading, reposLoading]);
+    }, [username, userLoading, reposLoading]);
 
     const chartSize = { height: 100, width: 100 };
 
@@ -92,10 +92,4 @@ const Stats = ({ match }) => {
     );
 };
 
-Stats.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.objectOf(PropTypes.string),
-    }).isRequired,
-};
-
-export default withRouter(Stats);
+export default Stats;

@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useHistory, useParams } from 'react-router';
 import Octicon, {
     Briefcase,
     Calendar,
@@ -14,7 +13,7 @@ import { GitHubContext } from 'context';
 import { Spinner } from 'components';
 import './UserInfoStyles.scss';
 
-const UserInfo = ({ match, history }) => {
+const UserInfo = () => {
     const {
         user: {
             avatar_url,
@@ -32,14 +31,17 @@ const UserInfo = ({ match, history }) => {
         getUser,
         error,
     } = useContext(GitHubContext);
+    const history = useHistory();
+    const { username } = useParams();
 
     useEffect(() => {
         if (error.active) {
             history.push(`/`);
+        } else {
+            getUser(username);
         }
-        getUser(match.params.login);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match.params.login, error.active]);
+    }, [username, error.active]);
 
     return (
         <div className="user-info">
@@ -110,10 +112,4 @@ const UserInfo = ({ match, history }) => {
     );
 };
 
-UserInfo.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.objectOf(PropTypes.string),
-    }).isRequired,
-};
-
-export default withRouter(UserInfo);
+export default UserInfo;

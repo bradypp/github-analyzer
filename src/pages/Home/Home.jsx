@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
 import Octicon, { MarkGithub } from '@primer/octicons-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,9 +7,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Error } from 'components';
 import './HomeStyles.scss';
 
-const Home = ({ history }) => {
+const Home = () => {
     const { error, setError, resetError } = useContext(GitHubContext);
     const [searchText, setSearchText] = useState('');
+    const history = useHistory();
 
     const onChange = event => {
         resetError();

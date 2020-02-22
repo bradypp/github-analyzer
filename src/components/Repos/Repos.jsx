@@ -1,18 +1,23 @@
 import React, { useEffect, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useHistory, useParams } from 'react-router';
 import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
 import { RepoItem, Spinner } from 'components';
 import './ReposStyles.scss';
 
-const Repos = ({ match }) => {
-    const { repos, reposLoading, getRepos } = useContext(GitHubContext);
+const Repos = () => {
+    const { repos, reposLoading, getRepos, error } = useContext(GitHubContext);
+    const { username } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
-        getRepos(match.params.login);
+        if (error.active) {
+            history.push(`/`);
+        } else {
+            getRepos(username);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match.params.login]);
+    }, [username]);
 
     return (
         <div className="repos">
@@ -32,10 +37,4 @@ const Repos = ({ match }) => {
     );
 };
 
-Repos.propTypes = {
-    match: PropTypes.shape({
-        params: PropTypes.objectOf(PropTypes.string),
-    }).isRequired,
-};
-
-export default withRouter(Repos);
+export default Repos;

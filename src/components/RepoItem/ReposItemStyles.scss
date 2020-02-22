@@ -1,11 +1,12 @@
 .repo-item {
     padding: 1.8rem;
-    // height: minmax(30rem, auto);
+    height: 22rem;
     border-radius: 0.4rem;
     box-shadow: var(--shadow-card);
     font-size: 1.4rem;
     color: var(--color-grey-dark-1);
     background-color: var(--color-white);
+    overflow: hidden;
 
     display: grid;
     grid-template-rows: min-content minmax(6rem, min-content) repeat(2, min-content);
@@ -42,6 +43,7 @@
 
     &__attributes {
         display: flex;
+        flex-wrap: wrap;
 
         svg {
             max-width: 16px;
@@ -52,7 +54,7 @@
         & > * {
             display: flex;
             align-items: center;
-            margin-right: 1.3rem;
+            margin-right: 1rem;
         }
 
         &--1 {

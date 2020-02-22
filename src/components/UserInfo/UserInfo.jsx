@@ -14,7 +14,7 @@ import { GitHubContext } from 'context';
 import { Spinner } from 'components';
 import './UserInfoStyles.scss';
 
-const UserInfo = ({ match }) => {
+const UserInfo = ({ match, history }) => {
     const {
         user: {
             avatar_url,
@@ -30,12 +30,17 @@ const UserInfo = ({ match }) => {
         },
         userLoading,
         getUser,
+        error,
     } = useContext(GitHubContext);
 
     useEffect(() => {
+        if (error.active) {
+            console.log(history);
+            history.push(`/`);
+        }
         getUser(match.params.login);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match.params.login]);
+    }, [match.params.login, error.active]);
 
     return (
         <div className="user-info">

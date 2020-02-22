@@ -1,0 +1,11 @@
+.error-message {
+    color: var(--color-primary-light);
+    display: inline-block;
+    font-size: 2rem;
+    display: none;
+    transition: var(--transition);
+
+    &--active {
+        display: block;
+    }
+}

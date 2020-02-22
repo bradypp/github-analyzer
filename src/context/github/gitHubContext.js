@@ -50,22 +50,23 @@ export const GitHubState = ({ children }) => {
 
     const getUser = async username => {
         setLoading(SET_USER_LOADING);
-
         try {
             const res = await axios.get(
                 `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`,
                 { validateStatus: false }
             );
+
             if (res.status === 404) {
-                setError(404, 'User not found!');
-            }
-            if (res.status === 403) {
+                setError(404, `User ${username} does not exist!`);
+            } else if (res.status === 403) {
                 setError(403, 'You"ve hit the GitHub api limit!');
+            } else {
+                resetError();
+                dispatch({
+                    type: GET_USER,
+                    payload: res.data,
+                });
             }
-            dispatch({
-                type: GET_USER,
-                payload: res.data,
-            });
         } catch (error) {
             setError(400);
             console.error('Error:', error);
@@ -79,16 +80,18 @@ export const GitHubState = ({ children }) => {
             const res = await axios.get(
                 `https://api.github.com/users/${username}/repos?per_page=100&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
             );
+
             if (res.status === 404) {
                 setError(404, `Repos not found for ${username}`);
-            }
-            if (res.status === 403) {
+            } else if (res.status === 403) {
                 setError(403, 'You"ve hit the GitHub api limit!');
+            } else {
+                resetError();
+                dispatch({
+                    type: GET_REPOS,
+                    payload: res.data,
+                });
             }
-            dispatch({
-                type: GET_REPOS,
-                payload: res.data,
-            });
         } catch (error) {
             setError(400);
             console.error('Error:', error);
@@ -119,8 +122,19 @@ export const GitHubState = ({ children }) => {
         dispatch({ type: RESET_STATE, payload: initialState });
     };
 
-    const setError = (type = 400, message = 'Something went wrong!') => {
+    const setError = (type = 400, message = 'Something went wrong. Please try again later!') => {
         dispatch({ type: SET_ERROR, payload: { active: true, type, message } });
+    };
+
+    const resetError = () => {
+        dispatch({
+            type: SET_ERROR,
+            payload: {
+                active: false,
+                type: null,
+                message: '',
+            },
+        });
     };
 
     return (
@@ -137,6 +151,7 @@ export const GitHubState = ({ children }) => {
                 setStats,
                 resetState,
                 setError,
+                resetError,
             }}>
             {children}
         </GitHubContext.Provider>

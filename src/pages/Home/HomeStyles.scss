@@ -18,7 +18,7 @@
 
         &__github-icon {
             color: var(--color-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         &__label {
@@ -26,7 +26,6 @@
             flex-direction: column;
             font-size: 4rem;
             font-weight: 400;
-            margin-bottom: 3.5rem;
             color: var(--color-primary-light);
             align-items: center;
         }
@@ -35,7 +34,7 @@
             height: 5rem;
             width: 65rem;
             height: 8rem;
-            margin-top: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
             padding: 1rem;
             font-size: 3rem;
             text-align: center;
@@ -46,7 +45,7 @@
             outline: 0;
             border: 0;
             color: var(--color-primary-light);
-            transition: all 0.3s;
+            transition: var(--transition);
 
             &::placeholder {
                 font-family: var(--mono-font-family);
@@ -63,12 +62,21 @@
                 background-color: var(--color-black-dark);
 
                 &::placeholder {
+                    visibility: hidden;
                     opacity: 0;
                 }
             }
 
             &--error {
-                //TODO: add error styling
+                border: 3px solid var(--color-error);
+                &:focus,
+                &:active {
+                    border: 3px solid var(--color-error);
+                }
+            }
+
+            &--hide {
+                display: none;
             }
         }
 
@@ -82,9 +90,9 @@
             font-size: 0.4rem;
             width: 15rem;
             height: 6rem;
+            margin-top: 2.5rem;
             letter-spacing: 0.5px;
-            // margin-top: 3rem;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+            transition: var(--transition) cubic-bezier(0.23, 1, 0.32, 1) 0s;
 
             &:hover,
             &:focus {

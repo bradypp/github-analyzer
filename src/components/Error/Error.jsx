@@ -21,10 +21,16 @@ const Error = ({ active, type, message }) => (
     </div>
 );
 
+Error.defaultProps = {
+    active: false,
+    type: null,
+    message: '',
+};
+
 Error.propTypes = {
-    active: PropTypes.bool.isRequired,
-    type: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired,
+    active: PropTypes.bool,
+    type: PropTypes.string,
+    message: PropTypes.string,
 };
 
 export default Error;

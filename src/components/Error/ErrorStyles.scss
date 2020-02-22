@@ -2,10 +2,12 @@
     color: var(--color-primary-light);
     display: inline-block;
     font-size: 2rem;
-    display: none;
-    transition: var(--transition);
+    visibility: none;
+    opacity: 0;
+    transition: all 0.2s;
 
     &--active {
-        display: block;
+        visibility: visible;
+        opacity: 1;
     }
 }

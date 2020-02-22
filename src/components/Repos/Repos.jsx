@@ -1,14 +1,28 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, useParams } from 'react-router';
+import Octicon, { TriangleDown } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
 import { RepoItem, Spinner } from 'components';
 import './ReposStyles.scss';
 
 const Repos = () => {
-    const { repos, reposLoading, getRepos, error } = useContext(GitHubContext);
+    const [sortType, setSortType] = useState('stars');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const { sortedRepos, reposLoading, getRepos, setSortedRepos, error } = useContext(
+        GitHubContext
+    );
     const { username } = useParams();
     const history = useHistory();
+
+    const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+    const changeRepoSort = sortType => {
+        setSortType(sortType);
+        toggleDropdown();
+    };
+
+    const sortTypes = ['stars', 'forks', 'size'];
 
     useEffect(() => {
         if (error.active) {
@@ -19,19 +33,61 @@ const Repos = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [username]);
 
+    useEffect(() => {
+        setSortedRepos(sortType);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reposLoading, sortType]);
+
     return (
         <div className="repos">
             {reposLoading ? (
                 <Spinner />
             ) : (
-                <FlipMove>
-                    <h1 className="repos__title">Top Repos</h1>
-                    <ul className="repos__items">
-                        {repos.map(repo => (
-                            <RepoItem key={repo.id} repo={repo} />
-                        ))}
-                    </ul>
-                </FlipMove>
+                <>
+                    <header>
+                        <h2 className="repos__title">Top Repos</h2>
+                        <div className="repos__dropdown-wrapper">
+                            <span className="repos__dropdown-wrapper__label">sorted by</span>
+                            <div className="repos__dropdown">
+                                <button
+                                    className={`repos__dropdown__button ${
+                                        dropdownOpen ? 'repos__dropdown__button--open' : ''
+                                    }`}
+                                    type="button"
+                                    onClick={() => toggleDropdown()}>
+                                    <p>{sortType}</p>
+                                    <Octicon icon={TriangleDown} />
+                                </button>
+                                <ul
+                                    className={`repos__dropdown__list ${
+                                        dropdownOpen ? 'repos__dropdown__list--open' : ''
+                                    }`}>
+                                    {sortTypes.map(type => (
+                                        <li className="repos__dropdown__list__item">
+                                            <button
+                                                type="button"
+                                                onClick={() => changeRepoSort(type)}>
+                                                {type}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                    <>
+                        {sortedRepos.length > 0 ? (
+                            <FlipMove className="repos__items" typeName="ul">
+                                {sortedRepos.map(repo => (
+                                    <RepoItem key={repo.id} repo={repo} />
+                                ))}
+                            </FlipMove>
+                        ) : (
+                            <p>No available repositories!</p>
+                        )}
+                    </>
+                    ;
+                </>
             )}
         </div>
     );

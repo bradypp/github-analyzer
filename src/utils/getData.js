@@ -1,11 +1,16 @@
 import { languageColors } from 'utils';
 
-export const getTopRepos = repos => {
-    const LIMIT = 8;
+export const getTopRepos = (repos, sortType, limit) => {
+    const map = {
+        stars: 'stargazers_count',
+        forks: 'forks_count',
+        size: 'size',
+    };
+    const sortProperty = map[sortType];
     return repos
         .filter(repo => !repo.fork)
-        .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        .slice(0, LIMIT);
+        .sort((a, b) => b[sortProperty] - a[sortProperty])
+        .slice(0, limit);
 };
 
 export const getTotalStars = repos =>

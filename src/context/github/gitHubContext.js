@@ -1,11 +1,12 @@
 import React, { useReducer, createContext } from 'react';
 import axios from 'axios';
-import { getTopRepos, getTotalStars, getLanguageData } from 'context/github/getData';
+import { getTopRepos, getTotalStars, getLanguageData } from 'utils/getData';
 import GitHubReducer from './gitHubReducer';
 import {
     GET_USER,
     SET_USER_LOADING,
     GET_REPOS,
+    SET_SORTED_REPOS,
     SET_REPOS_LOADING,
     SET_STATS,
     SET_STATS_LOADING,
@@ -31,6 +32,7 @@ export const GitHubState = ({ children }) => {
         user: {},
         userLoading: false,
         repos: [],
+        sortedRepos: [],
         reposLoading: false,
         stats: {
             totalStars: 0,
@@ -98,6 +100,19 @@ export const GitHubState = ({ children }) => {
         }
     };
 
+    const setSortedRepos = (sortType = 'stars', limit = 21) => {
+        const { repos, reposLoading, userLoading } = state;
+
+        if (userLoading || reposLoading) return;
+        console.log('sorting');
+        const sortedRepos = getTopRepos(repos, sortType, limit);
+        console.log(sortedRepos);
+        dispatch({
+            type: SET_SORTED_REPOS,
+            payload: sortedRepos,
+        });
+    };
+
     const setStats = () => {
         setLoading(SET_STATS_LOADING);
 
@@ -107,7 +122,7 @@ export const GitHubState = ({ children }) => {
 
         const stats = {
             totalStars: getTotalStars(repos),
-            topRepos: getTopRepos(repos),
+            topRepos: getTopRepos(repos, 'stars', 8),
             languageData: getLanguageData(repos),
         };
         dispatch({
@@ -143,11 +158,13 @@ export const GitHubState = ({ children }) => {
                 user: state.user,
                 userLoading: state.userLoading,
                 repos: state.repos,
+                sortedRepos: state.sortedRepos,
                 reposLoading: state.reposLoading,
                 stats: state.stats,
                 error: state.error,
                 getUser,
                 getRepos,
+                setSortedRepos,
                 setStats,
                 resetState,
                 setError,

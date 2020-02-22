@@ -2,6 +2,7 @@ import {
     GET_USER,
     SET_USER_LOADING,
     GET_REPOS,
+    SET_SORTED_REPOS,
     SET_REPOS_LOADING,
     SET_STATS,
     SET_STATS_LOADING,
@@ -33,6 +34,11 @@ export default (state, { type, payload }) => {
             return {
                 ...state,
                 reposLoading: true,
+            };
+        case SET_SORTED_REPOS:
+            return {
+                ...state,
+                sortedRepos: payload,
             };
         case SET_STATS: {
             return {

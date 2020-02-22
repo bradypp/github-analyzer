@@ -35,7 +35,6 @@ const UserInfo = ({ match, history }) => {
 
     useEffect(() => {
         if (error.active) {
-            console.log(history);
             history.push(`/`);
         }
         getUser(match.params.login);

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useReducer, createContext } from 'react';
 import axios from 'axios';
 import { getTopRepos, getTotalStars, getLanguageData } from 'utils/getData';
@@ -10,8 +11,9 @@ import {
     SET_REPOS_LOADING,
     SET_STATS,
     SET_STATS_LOADING,
-    RESET_STATE,
+    RESET_USER_STATE,
     SET_ERROR,
+    RESET_USER,
 } from '../actionTypes';
 
 let githubClientId;
@@ -45,7 +47,6 @@ export const GitHubState = ({ children }) => {
             type: null,
             message: '',
         },
-        test: null,
     };
 
     const [state, dispatch] = useReducer(GitHubReducer, initialState);
@@ -68,6 +69,32 @@ export const GitHubState = ({ children }) => {
                     type: GET_USER,
                     payload: res.data,
                 });
+            }
+        } catch (error) {
+            setError(400);
+            console.error('Error:', error);
+        }
+    };
+
+    const getRandomUser = async () => {
+        setLoading(SET_USER_LOADING);
+        try {
+            const res = await axios.get(
+                `https://api.github.com/search/users?q=repos:>=50+followers:>=1000&client_id=${githubClientId}&client_secret=${githubClientSecret}`,
+                { validateStatus: false }
+            );
+            if (res.status === 404) {
+                setError(404, `User can't be found!`);
+            } else if (res.status === 403) {
+                setError(403, 'You"ve hit the GitHub api limit!');
+            } else {
+                const randomUser = res.data.items[Math.floor(Math.random() * 30)];
+                resetError();
+                dispatch({
+                    type: GET_USER,
+                    payload: randomUser,
+                });
+                return randomUser;
             }
         } catch (error) {
             setError(400);
@@ -104,9 +131,9 @@ export const GitHubState = ({ children }) => {
         const { repos, reposLoading, userLoading } = state;
 
         if (userLoading || reposLoading) return;
-        console.log('sorting');
+
         const sortedRepos = getTopRepos(repos, sortType, limit);
-        console.log(sortedRepos);
+
         dispatch({
             type: SET_SORTED_REPOS,
             payload: sortedRepos,
@@ -133,8 +160,8 @@ export const GitHubState = ({ children }) => {
 
     const setLoading = type => dispatch({ type });
 
-    const resetState = () => {
-        dispatch({ type: RESET_STATE, payload: initialState });
+    const resetUserState = () => {
+        dispatch({ type: RESET_USER_STATE });
     };
 
     const setError = (type = 400, message = 'Something went wrong. Please try again later!') => {
@@ -163,12 +190,13 @@ export const GitHubState = ({ children }) => {
                 stats: state.stats,
                 error: state.error,
                 getUser,
+                getRandomUser,
                 getRepos,
                 setSortedRepos,
                 setStats,
-                resetState,
                 setError,
                 resetError,
+                resetUserState,
             }}>
             {children}
         </GitHubContext.Provider>

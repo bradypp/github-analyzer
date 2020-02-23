@@ -55,7 +55,6 @@
 
             svg {
                 transition: var(--transition);
-                transform: rotate(90deg);
                 max-width: 16px;
                 margin-left: 0.5rem;
             }
@@ -64,7 +63,7 @@
                 background: rgba(0, 118, 255, 0.1);
                 svg {
                     transition: var(--transition);
-                    transform: rotate(0deg);
+                    transform: rotate(180deg);
                 }
             }
         }

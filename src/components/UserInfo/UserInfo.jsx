@@ -37,7 +37,7 @@ const UserInfo = () => {
     useEffect(() => {
         if (error.active) {
             history.push(`/`);
-        } else {
+        } else if (!login) {
             getUser(username);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

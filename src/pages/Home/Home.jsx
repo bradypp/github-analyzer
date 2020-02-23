@@ -1,14 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
 import Octicon, { MarkGithub } from '@primer/octicons-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Error } from 'components';
 import './HomeStyles.scss';
 
 const Home = () => {
-    const { error, setError, resetError } = useContext(GitHubContext);
+    const { resetUserState, getRandomUser, error, setError, resetError } = useContext(
+        GitHubContext
+    );
     const [searchText, setSearchText] = useState('');
     const history = useHistory();
 
@@ -17,16 +17,29 @@ const Home = () => {
         setSearchText(event.target.value);
     };
 
+    const goToUserPage = username => {
+        history.push(`/user/${username}`);
+    };
+
     const onSubmit = event => {
         event.preventDefault();
-
         if (searchText !== '') {
-            history.push(`/user/${searchText}`);
+            goToUserPage(searchText);
             setSearchText('');
         } else {
-            setError(404, 'Please enter a username...');
+            setError(404, 'Please enter a username or click random to continue...');
         }
     };
+
+    const onRandom = async () => {
+        const randomUser = await getRandomUser();
+        goToUserPage(randomUser.login);
+    };
+
+    useEffect(() => {
+        resetUserState();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="home">
@@ -51,9 +64,20 @@ const Home = () => {
                     />
                 </label>
                 <Error active={error.active} type={error.type} message={error.message} />
-                <button type="submit" className="home__form__submit">
-                    <FontAwesomeIcon icon={faSearch} size="6x" />
-                </button>
+                <div
+                    className={`home__form__button-container ${
+                        error.active && error.type !== 404
+                            ? 'home__form__button-container--hide'
+                            : ''
+                    }`}>
+                    <button type="submit" className="home__form__submit">
+                        Search
+                    </button>
+                    <span className="home__form__text">or</span>
+                    <button type="button" className="home__form__submit" onClick={onRandom}>
+                        Random!
+                    </button>
+                </div>
             </form>
         </div>
     );

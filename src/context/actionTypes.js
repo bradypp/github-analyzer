@@ -7,3 +7,4 @@ export const SET_STATS = 'SET_STATS';
 export const SET_STATS_LOADING = 'SET_STATS_LOADING';
 export const RESET_STATE = 'RESET_STATE';
 export const SET_ERROR = 'SET_ERROR';
+export const RESET_USER_STATE = 'RESET_USER_STATE';

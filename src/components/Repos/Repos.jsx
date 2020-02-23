@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, useParams } from 'react-router';
+import uuidv4 from 'uuid/v4';
 import Octicon, { TriangleDown } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
@@ -66,6 +67,7 @@ const Repos = () => {
                                         <li className="repos__dropdown__list__item">
                                             <button
                                                 type="button"
+                                                key={uuidv4()}
                                                 onClick={() => changeRepoSort(type)}>
                                                 {type}
                                             </button>

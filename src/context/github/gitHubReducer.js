@@ -8,6 +8,7 @@ import {
     SET_STATS_LOADING,
     RESET_STATE,
     SET_ERROR,
+    RESET_USER_STATE,
 } from '../actionTypes';
 
 export default (state, { type, payload }) => {
@@ -61,6 +62,18 @@ export default (state, { type, payload }) => {
             return {
                 ...state,
                 error: payload,
+            };
+        case RESET_USER_STATE:
+            return {
+                ...state,
+                user: {},
+                repos: [],
+                sortedRepos: [],
+                stats: {
+                    totalStars: 0,
+                    topRepos: [],
+                    languageData: [],
+                },
             };
         default:
             return state;

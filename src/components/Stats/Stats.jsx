@@ -18,8 +18,7 @@ const Stats = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [username, userLoading, reposLoading]);
 
-    const pieChartSize = { height: 100, width: 100 };
-    const barChartSize = { height: 100, width: 100 };
+    const chartSize = { height: 100, width: 150 };
 
     return (
         <>
@@ -32,25 +31,25 @@ const Stats = () => {
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Most Starred Repos</h2>
                         <div className="stats__chart__container">
-                            <MostStarredReposChart chartSize={barChartSize} />
+                            <MostStarredReposChart chartSize={chartSize} />
                         </div>
                     </div>
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Top Languages</h2>
                         <div className="stats__chart__container">
-                            <TopLanguagesChart chartSize={pieChartSize} />
+                            <TopLanguagesChart chartSize={chartSize} />
                         </div>
                     </div>
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Stars Per Language</h2>
                         <div className="stats__chart__container">
-                            <StarsPerLanguageChart chartSize={pieChartSize} />
+                            <StarsPerLanguageChart chartSize={chartSize} />
                         </div>
                     </div>
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Biggest Repos</h2>
                         <div className="stats__chart__container">
-                            <BiggestReposChart chartSize={barChartSize} />
+                            <BiggestReposChart chartSize={chartSize} />
                         </div>
                     </div>
                 </div>

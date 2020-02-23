@@ -35,7 +35,7 @@ const buildScales = (axes, label = {}) => {
 
 const buildLegend = legend => {
     const leg = {
-        position: 'bottom',
+        position: 'right',
         labels: {
             fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
         },

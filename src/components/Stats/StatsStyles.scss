@@ -1,13 +1,15 @@
-$chart-container-width: 36rem;
-
 .stats {
+    --chart-container-width: 38rem;
+
     grid-column: col-start 5 / center-end;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($chart-container-width, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--chart-container-width), 1fr));
     grid-template-rows: repeat(auto-fill, min-content);
     justify-items: center;
     align-items: center;
-    grid-gap: 2rem;
+    justify-content: center;
+    align-content: center;
+    grid-row-gap: 4rem;
 
     &-spinner {
         grid-column: col-start 5 / center-end;
@@ -16,6 +18,7 @@ $chart-container-width: 36rem;
     &__chart {
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
         background-color: var(--color-white-alternate);
         border-radius: 5px;
@@ -23,7 +26,7 @@ $chart-container-width: 36rem;
         padding: 2rem;
 
         &__container {
-            width: $chart-container-width;
+            width: var(--chart-container-width);
             padding: 1rem 0;
         }
 
@@ -32,30 +35,6 @@ $chart-container-width: 36rem;
             margin-bottom: 2rem;
             border-bottom: var(--dashed-line);
             font-size: 2.2rem;
-        }
-    }
-
-    &__user {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        svg {
-            width: 20px;
-            margin-bottom: 0.4rem;
-        }
-
-        &__item {
-            font-size: 1.8rem;
-            font-weight: 300;
-            background-color: var(--color-primary-light);
-            margin: 1rem;
-            width: 18rem;
-            height: 10rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
         }
     }
 }

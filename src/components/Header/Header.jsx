@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
@@ -6,26 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faHome } from '@fortawesome/free-solid-svg-icons';
 import { Error, RepoCorner } from 'components';
 import './HeaderStyles.scss';
-=======
-import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router';
-import { GitHubContext } from 'context';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Error, RepoCorner } from 'components';
-import './Header.scss';
->>>>>>> df52c30ef1bdf2467b612bb9baea491e8b819d0c
 
 const Header = () => {
     const { resetUserState, error, setError, resetError } = useContext(GitHubContext);
     const [searchText, setSearchText] = useState('');
-<<<<<<< HEAD
     const [isExpandActive, setIsExpandActive] = useState('');
     const history = useHistory();
     const wrapperRef = useRef(null);
-=======
-    const history = useHistory();
->>>>>>> df52c30ef1bdf2467b612bb9baea491e8b819d0c
 
     const onChange = event => {
         resetError();
@@ -47,7 +33,6 @@ const Header = () => {
         }
     };
 
-<<<<<<< HEAD
     const expandSearch = () => !isExpandActive && setIsExpandActive(!isExpandActive);
 
     // Hook that alerts clicks outside of the passed ref
@@ -101,30 +86,6 @@ const Header = () => {
                     </label>
                     <Error active={error.active} type={error.type} message={error.message} />
                 </div>
-=======
-    return (
-        <div className="header">
-            <form onSubmit={onSubmit} className="header__form">
-                <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    className={`header__form__input ${
-                        error.active && error.type === 404
-                            ? 'header__form__input--error'
-                            : error.active && error.type !== 404
-                            ? 'header__form__input--hide'
-                            : ''
-                    }`}
-                    placeholder="Enter Username..."
-                    value={searchText}
-                    onChange={onChange}
-                />
-                <button type="submit" className="header__form__submit">
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
-                <Error active={error.active} type={error.type} message={error.message} />
->>>>>>> df52c30ef1bdf2467b612bb9baea491e8b819d0c
             </form>
             <RepoCorner />
         </div>

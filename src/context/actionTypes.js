@@ -5,6 +5,5 @@ export const SET_SORTED_REPOS = 'SET_SORTED_REPOS';
 export const SET_REPOS_LOADING = 'SET_REPOS_LOADING';
 export const SET_STATS = 'SET_STATS';
 export const SET_STATS_LOADING = 'SET_STATS_LOADING';
-export const RESET_STATE = 'RESET_STATE';
 export const SET_ERROR = 'SET_ERROR';
 export const RESET_USER_STATE = 'RESET_USER_STATE';

@@ -6,7 +6,6 @@ import {
     SET_REPOS_LOADING,
     SET_STATS,
     SET_STATS_LOADING,
-    RESET_STATE,
     SET_ERROR,
     RESET_USER_STATE,
 } from '../actionTypes';
@@ -52,11 +51,6 @@ export default (state, { type, payload }) => {
             return {
                 ...state,
                 statsLoading: true,
-            };
-        case RESET_STATE:
-            return {
-                ...state,
-                state: payload,
             };
         case SET_ERROR:
             return {

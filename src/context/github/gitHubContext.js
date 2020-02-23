@@ -13,7 +13,6 @@ import {
     SET_STATS_LOADING,
     RESET_USER_STATE,
     SET_ERROR,
-    RESET_USER,
 } from '../actionTypes';
 
 let githubClientId;

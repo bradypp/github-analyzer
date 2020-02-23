@@ -4,7 +4,7 @@ import './RepoCornerStyles.scss';
 const RepoCorner = () => (
     <>
         <a
-            href="https://github.com/bchiang7/octoprofile"
+            href="https://github.com/bradypp/github-analyzer"
             target="_blank"
             rel="noopener noreferrer"
             className="github-corner"

@@ -1,0 +1,11 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__form {
+        padding: 1rem 2rem;
+    }
+}

@@ -1,9 +1,14 @@
 import Chart from 'chart.js';
 
-const buildScales = axes => {
+const buildScales = (axes, label = {}) => {
+    const { xAxis, yAxis } = label;
     const scales = {
         xAxes: [
             {
+                scaleLabel: {
+                    display: xAxis,
+                    labelString: xAxis,
+                },
                 ticks: {
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
@@ -12,6 +17,10 @@ const buildScales = axes => {
         ],
         yAxes: [
             {
+                scaleLabel: {
+                    display: yAxis,
+                    labelString: yAxis,
+                },
                 ticks: {
                     beginAtZero: true,
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
@@ -35,7 +44,18 @@ const buildLegend = legend => {
 };
 
 const buildChart = config => {
-    const { ctx, chartType, labels, data, backgroundColor, borderColor, axes, legend } = config;
+    const {
+        ctx,
+        chartType,
+        labels,
+        data,
+        backgroundColor,
+        borderColor,
+        axes,
+        legend,
+        label,
+        xAxisLabel,
+    } = config;
 
     return new Chart(ctx, {
         type: chartType,
@@ -53,7 +73,7 @@ const buildChart = config => {
             ],
         },
         options: {
-            scales: buildScales(axes),
+            scales: buildScales(axes, label),
             legend: buildLegend(legend),
             tooltips: {
                 cornerRadius: 3,

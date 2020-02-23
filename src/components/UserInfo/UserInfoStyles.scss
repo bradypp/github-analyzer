@@ -8,7 +8,7 @@
     svg {
         width: 16px;
         margin-right: 1rem;
-        margin-bottom: 1px;
+        // margin-bottom: 1px;
     }
 
     & > *:not(:first-child) {
@@ -24,7 +24,7 @@
         svg {
             color: var(--color-grey-dark-3);
             margin-right: 0.6rem;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         &__img {
@@ -45,9 +45,8 @@
         }
     }
 
-    &__items {
-        // padding-top: 1.5rem;
-
+    &__items,
+    &__stats {
         li {
             font-size: 1.6rem;
             display: flex;

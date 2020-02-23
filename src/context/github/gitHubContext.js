@@ -38,6 +38,7 @@ export const GitHubState = ({ children }) => {
         stats: {
             totalStars: 0,
             topRepos: [],
+            biggestRepos: [],
             languageData: [],
         },
         statsLoading: false,
@@ -149,6 +150,7 @@ export const GitHubState = ({ children }) => {
         const stats = {
             totalStars: getTotalStars(repos),
             topRepos: getTopRepos(repos, 'stars', 8),
+            biggestRepos: getTopRepos(repos, 'size', 5),
             languageData: getLanguageData(repos),
         };
         dispatch({

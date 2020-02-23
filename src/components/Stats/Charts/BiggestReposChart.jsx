@@ -2,22 +2,24 @@ import React, { useEffect, useContext } from 'react';
 import { GitHubContext } from 'context';
 import { buildChart, backgroundColor, borderColor } from 'utils';
 
-const MostStarredReposChart = ({ chartSize: { height, width } }) => {
+const BiggestReposChart = ({ chartSize: { height, width } }) => {
     const {
-        stats: { topRepos },
+        stats: { biggestRepos },
     } = useContext(GitHubContext);
 
-    const initMostStarredReposChart = () => {
-        const ctx = document.getElementById('mostStarredReposChart');
-        const labels = topRepos.map(el => el.name);
-        const data = topRepos.map(el => el.stargazers_count);
+    const initBiggestReposChart = () => {
+        const ctx = document.getElementById('biggestReposChart');
+
+        biggestRepos.reverse();
+        const labels = biggestRepos.map(el => el.name);
+        const data = biggestRepos.map(el => el.size);
 
         if (data.length > 0) {
-            const chartType = 'bar';
+            const chartType = 'horizontalBar';
             const axes = true;
             const legend = false;
             const label = {
-                yAxis: 'stars',
+                xAxis: 'KB',
             };
             const config = {
                 ctx,
@@ -30,16 +32,17 @@ const MostStarredReposChart = ({ chartSize: { height, width } }) => {
                 legend,
                 label,
             };
+            console.log(label);
             buildChart(config);
         }
     };
 
     useEffect(() => {
-        initMostStarredReposChart();
+        initBiggestReposChart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [topRepos]);
+    }, [biggestRepos]);
 
-    return <canvas id="mostStarredReposChart" height={height} width={width} />;
+    return <canvas id="biggestReposChart" height={height} width={width} />;
 };
 
-export default MostStarredReposChart;
+export default BiggestReposChart;

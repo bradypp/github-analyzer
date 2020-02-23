@@ -14,13 +14,17 @@ $chart-container-width: 36rem;
     }
 
     &__chart {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         background-color: var(--color-white-alternate);
         border-radius: 5px;
+        border: 1px solid #ccc;
         padding: 2rem;
 
         &__container {
             width: $chart-container-width;
-            padding: 1rem;
+            padding: 1rem 0;
         }
 
         &__heading {
@@ -45,7 +49,7 @@ $chart-container-width: 36rem;
             font-size: 1.8rem;
             font-weight: 300;
             background-color: var(--color-primary-light);
-            margin: 0.6rem;
+            margin: 1rem;
             width: 18rem;
             height: 10rem;
             display: flex;

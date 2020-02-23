@@ -7,6 +7,7 @@ export const getTopRepos = (repos, sortType, limit) => {
         size: 'size',
     };
     const sortProperty = map[sortType];
+
     return repos
         .filter(repo => !repo.fork)
         .sort((a, b) => b[sortProperty] - a[sortProperty])

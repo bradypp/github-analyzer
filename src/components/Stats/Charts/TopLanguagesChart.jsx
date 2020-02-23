@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext} from 'react';
 import { GitHubContext } from 'context';
 import { buildChart } from 'utils';
 
@@ -6,9 +6,6 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
     const {
         stats: { languageData },
     } = useContext(GitHubContext);
-
-    // eslint-disable-next-line no-unused-vars
-    const [topLanguagesChartData, setTopLanguagesChartData] = useState(null);
 
     const initTopLanguagesChart = () => {
         const ctx = document.getElementById('topLanguagesChart');
@@ -30,8 +27,6 @@ const TopLanguagesChart = ({ chartSize: { height, width } }) => {
 
         const labels = topLanguages.map(el => el.language);
         const data = topLanguages.map(el => el.count);
-
-        setTopLanguagesChartData(data);
 
         if (data.length > 0) {
             const backgroundColor = topLanguages.map(({ color }) =>

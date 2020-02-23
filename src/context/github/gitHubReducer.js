@@ -66,6 +66,7 @@ export default (state, { type, payload }) => {
                 stats: {
                     totalStars: 0,
                     topRepos: [],
+                    biggestRepos: [],
                     languageData: [],
                 },
             };

@@ -88,7 +88,6 @@ const Repos = () => {
                             <p>No available repositories!</p>
                         )}
                     </>
-                    ;
                 </>
             )}
         </div>

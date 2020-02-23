@@ -1,9 +1,9 @@
-$chart-width: 34rem;
+$chart-container-width: 36rem;
 
 .stats {
     grid-column: col-start 5 / center-end;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($chart-width, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($chart-container-width, 1fr));
     grid-template-rows: repeat(auto-fill, min-content);
     justify-items: center;
     align-items: center;
@@ -14,8 +14,13 @@ $chart-width: 34rem;
     }
 
     &__chart {
+        background-color: var(--color-white-alternate);
+        border-radius: 5px;
+        padding: 2rem;
+
         &__container {
-            width: $chart-width;
+            width: $chart-container-width;
+            padding: 1rem;
         }
 
         &__heading {

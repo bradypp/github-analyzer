@@ -32,7 +32,8 @@ const Stats = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [username, userLoading, reposLoading]);
 
-    const chartSize = { height: 100, width: 100 };
+    const pieChartSize = { height: 100, width: 110 };
+    const barChartSize = { height: 110, width: 100 };
 
     return (
         <>
@@ -71,19 +72,19 @@ const Stats = () => {
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Most Starred Repos</h2>
                         <div className="stats__chart__container">
-                            <MostStarredReposChart chartSize={chartSize} />
+                            <MostStarredReposChart chartSize={barChartSize} />
                         </div>
                     </div>
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Top Languages</h2>
                         <div className="stats__chart__container">
-                            <TopLanguagesChart chartSize={chartSize} />
+                            <TopLanguagesChart chartSize={pieChartSize} />
                         </div>
                     </div>
                     <div className="stats__chart">
                         <h2 className="stats__chart__heading">Stars Per Language</h2>
                         <div className="stats__chart__container">
-                            <StarsPerLanguageChart chartSize={chartSize} />
+                            <StarsPerLanguageChart chartSize={pieChartSize} />
                         </div>
                     </div>
                 </div>

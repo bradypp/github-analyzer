@@ -1,0 +1,101 @@
+.header {
+    --starting-width: 5rem;
+    --expanded-width: 30rem;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 2rem;
+        margin-top: 1.5rem;
+        height: var(--starting-width);
+        width: var(--starting-width);
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-radius: 50px;
+        box-shadow: 0 0.5rem 2rem -1rem var(--color-primary);
+        border: 2px solid var(--color-primary);
+        font-size: 2rem;
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+        }
+    }
+
+    &__form {
+        &__search-expand {
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+
+            svg {
+                position: absolute;
+                left: 1.3rem;
+            }
+
+            &--active {
+                width: var(--expanded-width);
+                justify-content: space-between;
+
+                &:hover,
+                &:focus {
+                    cursor: default;
+                    box-shadow: 0 0.5rem 2rem -1rem var(--color-primary);
+                    background: var(--color-primary);
+                    border: 2px solid var(--color-primary);
+                }
+            }
+
+            &__input {
+                opacity: 0;
+                background-color: rgba(0, 0, 0, 0);
+                font-family: var(--mono-font-family);
+                font-size: 2rem;
+                font-weight: 600;
+                outline: 0;
+                border: 0;
+                color: var(--color-white);
+                transition: var(--transition);
+                margin-top: 2px;
+                width: 0;
+
+                &::placeholder {
+                    font-family: var(--mono-font-family);
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    opacity: 0.5;
+                }
+
+                &:focus,
+                &:active {
+                    &::placeholder {
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+                }
+
+                &--error {
+                    border: 3px solid var(--color-error);
+                    &:focus,
+                    &:active {
+                        border: 3px solid var(--color-error);
+                    }
+                }
+
+                &--active {
+                    opacity: 1;
+                    width: 22rem;
+                    height: 3rem;
+                    margin-left: 5.2rem;
+                }
+            }
+        }
+    }
+}

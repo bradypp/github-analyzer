@@ -10,7 +10,12 @@
     background-color: var(--color-white-alternate);
     grid-gap: var(--grid-gap);
 
-    & > * {
-        margin-bottom: 5rem;
+    &__section-1 {
+        padding: 4rem 0;
+        background-color: var(--color-white-alternate);
+    }
+
+    &__section-2 {
+        padding: 4rem 0;
     }
 }

@@ -10,7 +10,7 @@
 
     &__title {
         font-size: 2.8rem;
-        border-bottom: var(--dashed-line);
+        border-bottom: var(--dashed-line-dark);
     }
 
     &__dropdown-wrapper {
@@ -39,7 +39,7 @@
             font-weight: 600;
             line-height: 1;
             text-align: left;
-            color: var(--color-primary-dark-1);
+            color: var(--color-primary-dark);
             background-color: transparent;
             border: 1px solid rgba(0, 118, 255, 0.25);
             padding: 10px 7px;
@@ -100,7 +100,7 @@
                 button {
                     border: 0;
                     border-bottom: 1px solid rgba(0, 118, 255, 0.1);
-                    color: var(--color-primary-dark-1);
+                    color: var(--color-primary-dark);
                     background: rgba(0, 118, 255, 0.1);
                     padding: 10px 7px;
                     width: 100%;

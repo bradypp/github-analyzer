@@ -18,7 +18,7 @@ const Stats = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [username, userLoading, reposLoading]);
 
-    const chartSize = { height: 100, width: 150 };
+    const chartSize = { height: 100, width: 140 };
 
     return (
         <>
@@ -47,7 +47,7 @@ const Stats = () => {
                         </div>
                     </div>
                     <div className="stats__chart">
-                        <h2 className="stats__chart__heading">Biggest Repos</h2>
+                        <h2 className="stats__chart__heading">Largest Repos (KB)</h2>
                         <div className="stats__chart__container">
                             <BiggestReposChart chartSize={chartSize} />
                         </div>

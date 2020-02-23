@@ -62,12 +62,12 @@ const UserInfo = () => {
             ) : (
                 <>
                     <div className="user-info__top">
-                        <a href={html_url} target="_blank" rel="noopener noreferrer">
-                            <img
-                                className="user-info__top__img"
-                                src={avatar_url}
-                                alt="User Avatar"
-                            />
+                        <a
+                            href={html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="user-info__top__img">
+                            <img src={avatar_url} alt="User Avatar" />
                         </a>
                         <h1 className="user-info__top__name">{name}</h1>
                         <a
@@ -78,7 +78,7 @@ const UserInfo = () => {
                             <Octicon icon={MarkGithub} size="small" />
                             {login}
                         </a>
-                        {bio && <div className="user-info__top__bio">{bio}</div>}
+                        <div className="user-info__top__bio">{bio}</div>
                     </div>
 
                     <ul className="user-info__items">

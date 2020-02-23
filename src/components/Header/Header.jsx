@@ -20,6 +20,7 @@ const Header = () => {
 
     const goToUserPage = username => {
         history.push(`/user/${username}`);
+        setIsExpandActive(!isExpandActive);
     };
 
     const onSubmit = event => {

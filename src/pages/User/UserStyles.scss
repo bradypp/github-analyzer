@@ -1,4 +1,8 @@
 .user {
+    --grid-width: calc(130rem - var(--number-of-columns) * var(--grid-gap));
+    --number-of-columns: 16;
+    --grid-gap: 2rem;
+
     display: grid;
     grid-template-columns:
         [full-start] minmax(6rem, 1fr) [center-start] repeat(
@@ -7,15 +11,15 @@
                 [col-end]
         )
         [center-end] minmax(6rem, 1fr) [full-end];
-    background-color: var(--color-white-alternate);
     grid-gap: var(--grid-gap);
 
     &__section-1 {
-        padding: 4rem 0;
-        background-color: var(--color-white-alternate);
+        padding: 2rem 0 2rem;
+        background-color: var(--color-dark);
     }
 
     &__section-2 {
         padding: 4rem 0;
+        // background-color: var(--color-dark);
     }
 }

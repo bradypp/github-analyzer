@@ -1,15 +1,15 @@
 .stats {
-    --chart-container-width: 38rem;
+    --chart-container-width: 36rem;
 
-    grid-column: col-start 5 / center-end;
+    grid-column: col-start 6 / center-end;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--chart-container-width), 1fr));
     grid-template-rows: repeat(auto-fill, min-content);
     justify-items: center;
     align-items: center;
-    justify-content: center;
     align-content: center;
     grid-row-gap: 4rem;
+    margin-top: 2px;
 
     &-spinner {
         grid-column: col-start 5 / center-end;
@@ -20,20 +20,22 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background-color: var(--color-white-alternate);
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        padding: 2rem;
+        background-color: var(--color-dark-light);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-dark-light);
+        padding: 2.5rem 2rem;
 
         &__container {
             width: var(--chart-container-width);
+            height: 30rem;
             padding: 1rem 0;
         }
 
         &__heading {
+            color: var(--color-white);
             display: inline-block;
             margin-bottom: 2rem;
-            border-bottom: var(--dashed-line);
+            border-bottom: var(--dashed-line-light);
             font-size: 2.2rem;
         }
     }

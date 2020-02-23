@@ -1,4 +1,4 @@
-import React, { useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { GitHubContext } from 'context';
 import { buildChart } from 'utils';
 
@@ -29,12 +29,15 @@ const StarsPerLanguageChart = ({ chartSize: { height, width } }) => {
         const data = topLanguages.map(el => el.stars);
 
         if (data.length > 0) {
-            const backgroundColor = topLanguages.map(({ color }) =>
-                !color
-                    ? '#ccc'
-                    : `#${color.length > 4 ? color.slice(1) : color.slice(1).repeat(2)}B3`
-            );
+            // To make background color of the inside section transparent:
+            // const backgroundColor = topLanguages.map(({ color }) =>
+            //     !color
+            //         ? '#ccc'
+            //         : `#${color.length > 4 ? color.slice(1) : color.slice(1).repeat(2)}B3`
+            // );
+
             const borderColor = topLanguages.map(({ color }) => (!color ? '#bbb' : `${color}`));
+            const backgroundColor = borderColor;
             const chartType = 'doughnut';
             const axes = false;
             const legend = true;

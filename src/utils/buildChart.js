@@ -1,30 +1,43 @@
 import Chart from 'chart.js';
 
 const buildScales = (axes, label = {}) => {
-    const { xAxis, yAxis } = label;
+    // const { xAxis, yAxis } = label;
     const scales = {
+        color: 'fff',
         xAxes: [
             {
-                scaleLabel: {
-                    display: xAxis,
-                    labelString: xAxis,
-                },
+                // scaleLabel: {
+                //     display: xAxis,
+                //     labelString: xAxis,
+                //     fontColor: 'rgba(199,199,199,1)',
+                // },
                 ticks: {
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
+                    fontColor: 'rgba(199,199,199,1)',
+                },
+                gridLines: {
+                    zeroLineColor: 'rgba(199,199,199,0.5)',
+                    color: 'rgba(199,199,199,0.5)',
                 },
             },
         ],
         yAxes: [
             {
-                scaleLabel: {
-                    display: yAxis,
-                    labelString: yAxis,
-                },
+                // scaleLabel: {
+                //     display: yAxis,
+                //     labelString: yAxis,
+                //     fontColor: 'rgba(199,199,199,1)',
+                // },
                 ticks: {
                     beginAtZero: true,
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
+                    fontColor: 'rgba(199,199,199,1)',
+                },
+                gridLines: {
+                    zeroLineColor: 'rgba(199,199,199,0.5)',
+                    color: 'rgba(199,199,199,0.5)',
                 },
             },
         ],
@@ -38,6 +51,7 @@ const buildLegend = legend => {
         position: 'right',
         labels: {
             fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
+            fontColor: 'rgba(199,199,199,1)',
         },
     };
     return legend ? leg : null;
@@ -54,7 +68,6 @@ const buildChart = config => {
         axes,
         legend,
         label,
-        xAxisLabel,
     } = config;
 
     return new Chart(ctx, {
@@ -76,7 +89,7 @@ const buildChart = config => {
             scales: buildScales(axes, label),
             legend: buildLegend(legend),
             tooltips: {
-                cornerRadius: 3,
+                cornerRadius: 5,
             },
         },
     });

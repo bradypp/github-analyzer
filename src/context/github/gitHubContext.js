@@ -80,7 +80,7 @@ export const GitHubState = ({ children }) => {
         setLoading(SET_USER_LOADING);
         try {
             const res = await axios.get(
-                `https://api.github.com/search/users?q=repos:>=50+followers:>=1000&client_id=${githubClientId}&client_secret=${githubClientSecret}`,
+                `https://api.github.com/search/users?q=repos:<=100+followers:>=5000&client_id=${githubClientId}&client_secret=${githubClientSecret}`,
                 { validateStatus: false }
             );
             if (res.status === 404) {

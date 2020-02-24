@@ -14,7 +14,7 @@
     grid-gap: var(--grid-gap);
     margin-top: 2px;
 
-    @include mediaQuery(bp-1000) {
+    @include mediaQuery(bp-1200) {
         grid-gap: var(--grid-gap-mobile);
     }
 
@@ -54,6 +54,7 @@
 
             @include mediaQuery(bp-600) {
                 max-width: 75rem;
+                margin-top: var(--grid-gap-mobile);
             }
 
             &__heading {

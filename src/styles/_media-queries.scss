@@ -4,10 +4,10 @@
 
 // RESPONSIVE BREAKPOINTS
 $bp-1800: 112.5em; // 1800px, Big desktop
-$bp-1200: 75em; // 1200px, Small monitor
+$bp-1200: 76em; // 75em=1200px, I needed to up it slightly to 76em, Small monitor
 $bp-1000: 62.5em; // 1000px, Tablet landscape
 $bp-800: 50em; // 800px, Tablet portrait
-$bp-600: 37.5em; // 600px, Phone landscape
+$bp-600: 37.5em; // 00px, Phone landscape
 $bp-420: 26.25em; // 420px, Phone portrait
 
 @mixin mediaQuery($breakpoint) {

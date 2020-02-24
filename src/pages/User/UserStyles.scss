@@ -15,7 +15,7 @@
         [center-end] minmax(6rem, 1fr) [full-end];
     grid-gap: var(--grid-gap);
 
-    @include mediaQuery(bp-1000) {
+    @include mediaQuery(bp-1200) {
         grid-template-columns:
             [full-start] 1fr [center-start] repeat(
                 var(--number-of-columns),

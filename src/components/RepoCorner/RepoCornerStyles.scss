@@ -3,12 +3,19 @@
     top: 0;
     right: 0;
     border: 0;
+
     &:hover .octo-arm {
         animation: octocat-wave 560ms ease-in-out;
     }
     svg {
         fill: var(--color-primary);
-        color: var(--color-white-alternate);
+        color: var(--color-white);
+        transition: var(--transition);
+
+        &:hover {
+            fill: var(--color-primary-dark);
+        }
+
         .octo-arm {
             transform-origin: 130px 106px;
         }
@@ -33,6 +40,7 @@
         &:hover .octo-arm {
             animation: none;
         }
+
         .octo-arm {
             animation: octocat-wave 560ms ease-in-out;
         }

@@ -4,7 +4,6 @@
     border-radius: 0.4rem;
     box-shadow: var(--shadow-card);
     font-size: 1.4rem;
-    color: var(--color-grey-light-3);
     background-color: var(--color-dark-light);
     overflow: hidden;
 
@@ -12,9 +11,11 @@
     grid-template-rows: min-content minmax(7rem, min-content) repeat(2, min-content);
     grid-gap: 0.8rem;
     align-content: space-between;
+    transition: all 0.2s;
 
     &:hover,
     &:focus {
+        transform: translateY(-0.5rem);
         box-shadow: var(--shadow-card-active);
     }
 
@@ -29,7 +30,6 @@
         font-weight: 400;
         letter-spacing: -0.5px;
         font-family: var(--mono-font-family);
-        color: var(--color-white);
 
         svg {
             max-width: 16px;
@@ -38,13 +38,13 @@
     }
 
     &__description {
+        color: var(--color-white-alternate);
         grid-row: 2;
     }
 
     &__attributes {
         display: flex;
         flex-wrap: wrap;
-        color: var(--color-white);
 
         svg {
             max-width: 16px;
@@ -76,7 +76,7 @@
 }
 
 .repo-github-url {
-    color: var(--color-grey-dark-3);
+    color: var(--color-white-main);
 
     &:hover {
         text-decoration: none;

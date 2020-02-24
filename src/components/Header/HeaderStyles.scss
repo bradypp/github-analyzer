@@ -19,13 +19,16 @@
         color: var(--color-white);
         background-color: var(--color-primary);
         border-radius: 50px;
-        box-shadow: 0 0.5rem 2rem -1rem var(--color-primary);
+        box-shadow: 0 0.5rem 2rem -1.2rem var(--color-primary);
         border: 2px solid var(--color-primary);
         font-size: 2rem;
 
         &:hover,
         &:focus {
             cursor: pointer;
+            background-color: var(--color-primary-dark);
+            border: 2px solid var(--color-primary-dark);
+            box-shadow: 0 0.5rem 2rem -1.2rem var(--color-primary-dark);
         }
     }
 
@@ -47,13 +50,12 @@
             &--active {
                 width: var(--expanded-width);
                 justify-content: space-between;
+                background-color: var(--color-primary-dark);
+                border: 2px solid var(--color-primary-dark);
 
                 &:hover,
                 &:focus {
                     cursor: default;
-                    box-shadow: 0 0.5rem 2rem -1rem var(--color-primary);
-                    background: var(--color-primary);
-                    border: 2px solid var(--color-primary);
                 }
             }
 
@@ -77,12 +79,11 @@
                     opacity: 0.7;
                 }
 
-                &--error {
-                    border: 3px solid var(--color-error);
-                    &:focus,
-                    &:active {
-                        border: 3px solid var(--color-error);
-                    }
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: var(--color-primary-dark);
+                    border: 2px solid var(--color-primary-dark);
                 }
 
                 &--active {

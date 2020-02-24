@@ -8,16 +8,13 @@
 
 .spinner {
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(195, 195, 195, 0.6);
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 50%;
-    border-top-color: #636767;
+    color: #636767;
+    border: 5px solid #aaa;
+    border-top-color: #666;
     animation: spin 1s ease-in-out infinite;
-    -webkit-animation: spin 1s ease-in-out infinite;
-
-    &--white {
-    }
 
     &--small {
         width: 30px;

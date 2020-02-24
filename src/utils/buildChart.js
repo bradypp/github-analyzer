@@ -9,16 +9,16 @@ const buildScales = (axes, label = {}) => {
                 // scaleLabel: {
                 //     display: xAxis,
                 //     labelString: xAxis,
-                //     fontColor: 'rgba(199,199,199,1)',
+                //     fontColor: '#ccd6f6',
                 // },
                 ticks: {
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
-                    fontColor: 'rgba(199,199,199,1)',
+                    fontColor: '#ccd6f6',
                 },
                 gridLines: {
-                    zeroLineColor: 'rgba(199,199,199,0.5)',
-                    color: 'rgba(199,199,199,0.5)',
+                    zeroLineColor: '#8892b0',
+                    color: '#8892b0',
                 },
             },
         ],
@@ -27,17 +27,17 @@ const buildScales = (axes, label = {}) => {
                 // scaleLabel: {
                 //     display: yAxis,
                 //     labelString: yAxis,
-                //     fontColor: 'rgba(199,199,199,1)',
+                //     fontColor: '#ccd6f6',
                 // },
                 ticks: {
                     beginAtZero: true,
                     fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
                     fontSize: 12,
-                    fontColor: 'rgba(199,199,199,1)',
+                    fontColor: '#ccd6f6',
                 },
                 gridLines: {
-                    zeroLineColor: 'rgba(199,199,199,0.5)',
-                    color: 'rgba(199,199,199,0.5)',
+                    zeroLineColor: '#8892b0',
+                    color: '#8892b0',
                 },
             },
         ],
@@ -51,7 +51,7 @@ const buildLegend = legend => {
         position: 'right',
         labels: {
             fontFamily: "'Lato', system, -apple-system, 'Arial', sans-serif",
-            fontColor: 'rgba(199,199,199,1)',
+            fontColor: '#ccd6f6',
         },
     };
     return legend ? leg : null;

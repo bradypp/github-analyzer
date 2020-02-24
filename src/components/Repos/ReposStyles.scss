@@ -10,8 +10,6 @@
 
     &__title {
         font-size: 2.8rem;
-        color: var(--color-white);
-
         border-bottom: var(--dashed-line-light);
     }
 
@@ -41,8 +39,10 @@
             font-weight: 600;
             line-height: 1;
             text-align: left;
-            background-color: #fff;
-            border: 1px solid #fff;
+            background-color: var(--color-white-main);
+            border: 1px solid var(--color-white-main);
+            border-bottom: 1px solid rgb(179, 207, 238);
+
             padding: 10px 7px;
             border-radius: 5px;
             transition: var(--transition);
@@ -50,8 +50,8 @@
             &:hover,
             &:focus {
                 cursor: pointer;
-                background: rgb(220, 237, 255);
-                border-color: rgb(220, 237, 255);
+                background: rgb(182, 206, 233);
+                border-color: rgb(182, 206, 233);
             }
 
             svg {
@@ -61,7 +61,7 @@
             }
 
             &--open {
-                background: rgb(220, 237, 255);
+                background: var(--color-white-main);
                 border-radius: 0;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
@@ -82,23 +82,21 @@
             box-shadow: 0 0.5rem 3rem -1.5rem rgba(0, 0, 0, 0.2);
             opacity: 0;
             visibility: hidden;
-            background-color: #fff;
+            background-color: rgb(182, 206, 233);
+
+            &:last-child {
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
 
             &__item {
                 border-radius: 0;
                 transition: var(--transition);
 
-                &:last-of-type {
-                    button {
-                        border-bottom-left-radius: 5px;
-                        border-bottom-right-radius: 5px;
-                    }
-                }
-
                 button {
                     border: 0;
-                    border-bottom: 1px solid rgb(220, 237, 255);
-                    background: #fff;
+                    border-bottom: 1px solid rgb(179, 207, 238);
+                    background: var(--color-white-main);
                     padding: 10px 7px;
                     width: 100%;
                     font-size: 1.4rem;
@@ -109,7 +107,7 @@
                     &:hover,
                     &:focus {
                         cursor: pointer;
-                        background: rgb(220, 237, 255);
+                        background: rgb(182, 206, 233);
                     }
                 }
             }

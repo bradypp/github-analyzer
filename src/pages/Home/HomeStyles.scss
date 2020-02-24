@@ -26,7 +26,7 @@
             flex-direction: column;
             font-size: 4rem;
             font-weight: 400;
-            color: var(--color-primary-light);
+            color: var(--color-white-main);
             align-items: center;
         }
 
@@ -94,7 +94,7 @@
             color: var(--color-white);
             background-color: var(--color-primary);
             border-radius: 3rem;
-            box-shadow: 0 0.5rem 2rem -1rem var(--color-primary);
+            box-shadow: 0 0.5rem 2rem -1.2rem var(--color-primary);
             border: 2px solid var(--color-primary);
             font-size: 1.8rem;
             font-weight: 600;
@@ -106,7 +106,7 @@
             &:hover,
             &:focus {
                 cursor: pointer;
-                box-shadow: 0 0.5rem 2rem -1rem var(--color-primary-dark);
+                box-shadow: 0 0.5rem 2rem -1.2rem var(--color-primary-dark);
                 background: var(--color-primary-dark);
                 border: 2px solid var(--color-primary-dark);
             }

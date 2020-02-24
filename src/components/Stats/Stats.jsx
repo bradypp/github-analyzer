@@ -18,7 +18,7 @@ const Stats = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [username, userLoading, reposLoading]);
 
-    const chartSize = { height: 100, width: 140 };
+    const chartSize = { height: 110, width: 140 };
 
     return (
         <div className="stats">

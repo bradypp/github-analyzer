@@ -80,7 +80,7 @@ export const GitHubState = ({ children }) => {
         setLoading(SET_USER_LOADING);
         try {
             const res = await axios.get(
-                `https://api.github.com/search/users?q=repos:<=100+followers:>=5000&client_id=${githubClientId}&client_secret=${githubClientSecret}`,
+                `https://api.github.com/search/users?per_page=100&q=followers:>=5000&client_id=${githubClientId}&client_secret=${githubClientSecret}`,
                 { validateStatus: false }
             );
             if (res.status === 404) {
@@ -88,7 +88,7 @@ export const GitHubState = ({ children }) => {
             } else if (res.status === 403) {
                 setError(403, 'You"ve hit the GitHub api limit!');
             } else {
-                const randomUser = res.data.items[Math.floor(Math.random() * 30)];
+                const randomUser = res.data.items[Math.floor(Math.random() * 100)];
                 resetError();
                 dispatch({
                     type: GET_USER,

@@ -8,10 +8,8 @@
     --shadow-card-active: 0 1.2rem 3rem -1.4rem rgba(0, 0, 0, 0.2);
 
     // DIVIDER
-    --line-dark: 1px solid var(--color-grey-dark-1);
-    --line-light: 1px solid var(--color-grey-light-2);
-    --dashed-line-dark: 2px dashed var(--color-grey-dark-1);
-    --dashed-line-light: 2px dashed var(--color-dark-light-2);
+    --line-light: 1px solid var(--color-white-alternate);
+    --dashed-line-light: 2px dashed var(--color-white-alternate);
 
     // ANIMATIONS
     --transition: all 0.3s;

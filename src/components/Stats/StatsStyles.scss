@@ -1,14 +1,15 @@
 .stats {
-    --chart-container-width: 36rem;
+    --chart-container-width: 42rem;
 
     grid-column: col-start 6 / center-end;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--chart-container-width), 1fr));
     grid-template-rows: repeat(auto-fill, min-content);
     justify-items: center;
-    align-items: center;
-    align-content: center;
-    grid-row-gap: 4rem;
+    align-items: start;
+    justify-content: center;
+    align-content: start;
+    grid-gap: 2rem;
     margin-top: 2px;
 
     &__spinner {
@@ -27,17 +28,17 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--color-dark-light);
         padding: 2.5rem 2rem;
+        width: 100%;
 
         &__container {
             width: var(--chart-container-width);
             min-height: 30rem;
-            padding: 1rem 0;
+            padding: 0rem 2rem;
         }
 
         &__heading {
-            color: var(--color-white);
             display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             border-bottom: var(--dashed-line-light);
             font-size: 2.2rem;
         }

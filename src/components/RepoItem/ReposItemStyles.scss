@@ -4,12 +4,12 @@
     border-radius: 0.4rem;
     box-shadow: var(--shadow-card);
     font-size: 1.4rem;
-    color: var(--color-grey-dark-1);
-    background-color: var(--color-white);
+    color: var(--color-grey-light-3);
+    background-color: var(--color-dark-light);
     overflow: hidden;
 
     display: grid;
-    grid-template-rows: min-content minmax(6rem, min-content) repeat(2, min-content);
+    grid-template-rows: min-content minmax(7rem, min-content) repeat(2, min-content);
     grid-gap: 0.8rem;
     align-content: space-between;
 
@@ -25,11 +25,11 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        color: var(--color-grey-dark-3);
         font-size: 1.5rem;
         font-weight: 400;
         letter-spacing: -0.5px;
         font-family: var(--mono-font-family);
+        color: var(--color-white);
 
         svg {
             max-width: 16px;
@@ -44,11 +44,11 @@
     &__attributes {
         display: flex;
         flex-wrap: wrap;
+        color: var(--color-white);
 
         svg {
             max-width: 16px;
             margin-right: 0.5rem;
-            margin-bottom: 3px;
         }
 
         & > * {
@@ -63,6 +63,10 @@
 
         &--2 {
             grid-row: 4;
+        }
+
+        &__created_at {
+            margin-right: auto;
         }
 
         &__watching {

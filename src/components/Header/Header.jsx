@@ -2,14 +2,17 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faHome } from '@fortawesome/free-solid-svg-icons';
-import { Error, RepoCorner } from 'components';
+import { faSearch, faHome, faRandom } from '@fortawesome/free-solid-svg-icons';
+import { RepoCorner } from 'components';
+import { useClickedOutsideHandler } from 'utils/hooks';
 import './HeaderStyles.scss';
 
 const Header = () => {
-    const { resetUserState, error, setError, resetError } = useContext(GitHubContext);
+    const { resetUserState, error, setError, resetError, getRandomUser, userLoading } = useContext(
+        GitHubContext
+    );
     const [searchText, setSearchText] = useState('');
-    const [isExpandActive, setIsExpandActive] = useState('');
+    const [isExpandActive, setIsExpandActive] = useState(false);
     const history = useHistory();
     const wrapperRef = useRef(null);
 
@@ -21,6 +24,11 @@ const Header = () => {
     const goToUserPage = username => {
         history.push(`/user/${username}`);
         setIsExpandActive(!isExpandActive);
+    };
+
+    const onRandom = async () => {
+        const randomUser = await getRandomUser();
+        goToUserPage(randomUser.login);
     };
 
     const onSubmit = event => {
@@ -36,30 +44,28 @@ const Header = () => {
 
     const expandSearch = () => !isExpandActive && setIsExpandActive(!isExpandActive);
 
-    // Hook that alerts clicks outside of the passed ref
-    const useClickedOutsideHandler = ref => {
-        // Alert if clicked outside of element
-        const handleClickOutside = event => {
-            if (ref.current && !ref.current.contains(event.target) && isExpandActive) {
-                setIsExpandActive(!isExpandActive);
-            }
-        };
+    useClickedOutsideHandler(wrapperRef, isExpandActive, setIsExpandActive, !isExpandActive);
 
-        useEffect(() => {
-            // Bind the event listener
-            document.addEventListener('mousedown', handleClickOutside);
-            return () => {
-                // Unbind the event listener on clean up
-                document.removeEventListener('mousedown', handleClickOutside);
-            };
-        });
-    };
-    useClickedOutsideHandler(wrapperRef);
+    useEffect(() => {
+        if (userLoading) {
+            setIsExpandActive(false);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isExpandActive, userLoading]);
 
     return (
         <div className="header">
             <div className="header__btn header__home" onClick={() => history.push('/')}>
                 <FontAwesomeIcon icon={faHome} />
+            </div>
+            <div
+                onClick={() => {
+                    onRandom();
+                    setIsExpandActive(false);
+                }}>
+                <div className="header__btn header__random">
+                    <FontAwesomeIcon icon={faRandom} />
+                </div>
             </div>
             <form onSubmit={onSubmit} className="header__form">
                 <div ref={wrapperRef} onClick={expandSearch}>
@@ -85,7 +91,6 @@ const Header = () => {
                             onChange={onChange}
                         />
                     </label>
-                    <Error active={error.active} type={error.type} message={error.message} />
                 </div>
             </form>
             <RepoCorner />

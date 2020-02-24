@@ -21,40 +21,56 @@ const Stats = () => {
     const chartSize = { height: 100, width: 140 };
 
     return (
-        <>
-            {statsLoading || userLoading || reposLoading ? (
-                <div className="stats-spinner">
-                    <Spinner />
+        <div className="stats">
+            <div className="stats__chart">
+                <h2 className="stats__chart__heading">Most Starred Repos</h2>
+                <div className="stats__chart__container">
+                    {statsLoading || userLoading || reposLoading ? (
+                        <div className="stats__spinner">
+                            <Spinner overlayActive={false} />
+                        </div>
+                    ) : (
+                        <MostStarredReposChart chartSize={chartSize} />
+                    )}
                 </div>
-            ) : (
-                <div className="stats">
-                    <div className="stats__chart">
-                        <h2 className="stats__chart__heading">Most Starred Repos</h2>
-                        <div className="stats__chart__container">
-                            <MostStarredReposChart chartSize={chartSize} />
+            </div>
+            <div className="stats__chart">
+                <h2 className="stats__chart__heading">Top Languages</h2>
+                <div className="stats__chart__container">
+                    {statsLoading || userLoading || reposLoading ? (
+                        <div className="stats__spinner">
+                            <Spinner overlayActive={false} />
                         </div>
-                    </div>
-                    <div className="stats__chart">
-                        <h2 className="stats__chart__heading">Top Languages</h2>
-                        <div className="stats__chart__container">
-                            <TopLanguagesChart chartSize={chartSize} />
-                        </div>
-                    </div>
-                    <div className="stats__chart">
-                        <h2 className="stats__chart__heading">Stars Per Language</h2>
-                        <div className="stats__chart__container">
-                            <StarsPerLanguageChart chartSize={chartSize} />
-                        </div>
-                    </div>
-                    <div className="stats__chart">
-                        <h2 className="stats__chart__heading">Largest Repos (KB)</h2>
-                        <div className="stats__chart__container">
-                            <BiggestReposChart chartSize={chartSize} />
-                        </div>
-                    </div>
+                    ) : (
+                        <TopLanguagesChart chartSize={chartSize} />
+                    )}
                 </div>
-            )}
-        </>
+            </div>
+            <div className="stats__chart">
+                <h2 className="stats__chart__heading">Stars Per Language</h2>
+                <div className="stats__chart__container">
+                    {statsLoading || userLoading || reposLoading ? (
+                        <div className="stats__spinner">
+                            <Spinner overlayActive={false} />
+                        </div>
+                    ) : (
+                        <StarsPerLanguageChart chartSize={chartSize} />
+                    )}
+                </div>
+            </div>
+            <div className="stats__chart">
+                <h2 className="stats__chart__heading">Largest Repos (KB)</h2>
+                <div className="stats__chart__container">
+                    {statsLoading || userLoading || reposLoading ? (
+                        <div className="stats__spinner">
+                            <Spinner overlayActive={false} />
+                        </div>
+                    ) : (
+                        <BiggestReposChart chartSize={chartSize} />
+                    )}
+                </div>
+            </div>
+        </div>
     );
 };
 

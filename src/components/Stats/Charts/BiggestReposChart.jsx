@@ -32,7 +32,6 @@ const BiggestReposChart = ({ chartSize: { height, width } }) => {
                 legend,
                 label,
             };
-            console.log(label);
             buildChart(config);
         }
     };

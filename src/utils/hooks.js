@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 
-export const useClickedOutsideHandler = ref => {
+// Hook that alerts clicks outside of the passed ref
+export const useClickedOutsideHandler = (ref, condition, handler, handlerParams = null) => {
     // Alert if clicked outside of element
-    const handleClickOutside = (event, condition, handler, params = null) => {
+    const handleClickOutside = event => {
         if (ref.current && !ref.current.contains(event.target) && condition) {
-            handler(params);
+            handler(handlerParams);
         }
     };
 

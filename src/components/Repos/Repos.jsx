@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useHistory, useParams } from 'react-router';
 import uuidv4 from 'uuid/v4';
 import Octicon, { TriangleDown } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
 import { RepoItem, Spinner } from 'components';
+import { useClickedOutsideHandler } from 'utils/hooks';
+
 import './ReposStyles.scss';
 
 const Repos = () => {
@@ -15,6 +17,7 @@ const Repos = () => {
     );
     const { username } = useParams();
     const history = useHistory();
+    const wrapperRef = useRef(null);
 
     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
@@ -24,6 +27,8 @@ const Repos = () => {
     };
 
     const sortTypes = ['stars', 'forks', 'size'];
+
+    useClickedOutsideHandler(wrapperRef, dropdownOpen, setDropdownOpen, !dropdownOpen);
 
     useEffect(() => {
         if (error.active) {
@@ -47,7 +52,7 @@ const Repos = () => {
                 <>
                     <header>
                         <h2 className="repos__title">Top Repos</h2>
-                        <div className="repos__dropdown-wrapper">
+                        <div className="repos__dropdown-wrapper" ref={wrapperRef}>
                             <span className="repos__dropdown-wrapper__label">sorted by</span>
                             <div className="repos__dropdown">
                                 <button

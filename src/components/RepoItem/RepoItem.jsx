@@ -76,6 +76,7 @@ class RepoItem extends React.Component {
                     <div className="repo-item__attributes repo-item__attributes--1">
                         <div className="repo-item__attributes__created_at">
                             <Octicon icon={Calendar} size="small" />
+                            Created:{' '}
                             {new Date(created_at).toLocaleDateString('en-UK', {
                                 day: 'numeric',
                                 month: 'numeric',
@@ -84,6 +85,7 @@ class RepoItem extends React.Component {
                         </div>
                         <div className="repo-item__attributes__updated_at">
                             <Octicon icon={Sync} size="small" />
+                            Updated:{' '}
                             {new Date(updated_at).toLocaleDateString('en-UK', {
                                 day: 'numeric',
                                 month: 'numeric',
@@ -92,10 +94,12 @@ class RepoItem extends React.Component {
                         </div>
                     </div>
                     <div className="repo-item__attributes repo-item__attributes--2">
-                        <div className="repo-item__attributes__language">
-                            <Octicon icon={Browser} size="small" />
-                            {language}
-                        </div>
+                        {language && (
+                            <div className="repo-item__attributes__language">
+                                <Octicon icon={Browser} size="small" />
+                                {language}
+                            </div>
+                        )}
                         <div className="repo-item__attributes__stars">
                             <Octicon icon={Star} size="small" />
                             {stargazers_count}

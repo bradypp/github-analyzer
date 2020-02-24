@@ -11,8 +11,11 @@
     grid-row-gap: 4rem;
     margin-top: 2px;
 
-    &-spinner {
-        grid-column: col-start 5 / center-end;
+    &__spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 22rem;
     }
 
     &__chart {
@@ -27,7 +30,7 @@
 
         &__container {
             width: var(--chart-container-width);
-            height: 30rem;
+            min-height: 30rem;
             padding: 1rem 0;
         }
 

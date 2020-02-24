@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,7 @@ import { useClickedOutsideHandler } from 'utils/hooks';
 import './HeaderStyles.scss';
 
 const Header = () => {
-    const { resetUserState, error, setError, resetError, getRandomUser, userLoading } = useContext(
+    const { resetUserState, error, setError, resetError, getRandomUser } = useContext(
         GitHubContext
     );
     const [searchText, setSearchText] = useState('');
@@ -22,8 +22,9 @@ const Header = () => {
     };
 
     const goToUserPage = username => {
+        resetUserState();
         history.push(`/user/${username}`);
-        setIsExpandActive(!isExpandActive);
+        setIsExpandActive(false);
     };
 
     const onRandom = async () => {
@@ -34,7 +35,6 @@ const Header = () => {
     const onSubmit = event => {
         event.preventDefault();
         if (searchText !== '') {
-            resetUserState();
             goToUserPage(searchText);
             setSearchText('');
         } else {
@@ -45,13 +45,6 @@ const Header = () => {
     const expandSearch = () => !isExpandActive && setIsExpandActive(!isExpandActive);
 
     useClickedOutsideHandler(wrapperRef, isExpandActive, setIsExpandActive, !isExpandActive);
-
-    useEffect(() => {
-        if (userLoading) {
-            setIsExpandActive(false);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isExpandActive, userLoading]);
 
     return (
         <div className="header">

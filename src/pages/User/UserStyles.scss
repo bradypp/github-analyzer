@@ -13,13 +13,9 @@
         [center-end] minmax(6rem, 1fr) [full-end];
     grid-gap: var(--grid-gap);
 
-    &__section-1 {
-        padding: 2rem 0 2rem;
-        background-color: var(--color-dark);
-    }
-
+    &__section-1,
     &__section-2 {
-        padding: 4rem 0;
+        padding: 2rem 0;
         background-color: var(--color-dark);
     }
 }

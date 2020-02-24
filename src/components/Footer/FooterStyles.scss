@@ -1,0 +1,26 @@
+.footer {
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            font-weight: 600;
+        }
+
+        &__item {
+            &:not(:last-child),
+            &:not(:first-child) {
+                margin-left: 0.6rem;
+            }
+
+            &--link {
+                margin-right: 0.6rem;
+            }
+
+            &:last-child {
+                margin: 0rem;
+            }
+        }
+    }
+}

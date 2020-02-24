@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { GitHubContext } from 'context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -48,14 +49,10 @@ const Header = () => {
 
     return (
         <div className="header">
-            <div className="header__btn header__home" onClick={() => history.push('/')}>
+            <Link to="/" className="header__btn header__home">
                 <FontAwesomeIcon icon={faHome} />
-            </div>
-            <div
-                onClick={() => {
-                    onRandom();
-                    setIsExpandActive(false);
-                }}>
+            </Link>
+            <div onClick={onRandom}>
                 <div className="header__btn header__random">
                     <FontAwesomeIcon icon={faRandom} />
                 </div>

@@ -29,6 +29,6 @@
     --color-white-main: #cfd9fa;
     --color-white-alternate: #8b96b4;
 
-    --color-link: #0366d6;
+    --color-link: var(--color-primary);
     --color-error: #ff5252;
 }

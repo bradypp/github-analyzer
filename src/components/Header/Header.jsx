@@ -29,6 +29,7 @@ const Header = () => {
     };
 
     const onRandom = async () => {
+        resetUserState();
         const randomUser = await getRandomUser();
         goToUserPage(randomUser.login);
     };

@@ -25,6 +25,15 @@
             [center-end] 1fr [full-end];
         grid-gap: var(--grid-gap-mobile);
     }
+    @include mediaQuery(bp-600) {
+        grid-template-columns:
+            [center-start] repeat(
+                var(--number-of-columns),
+                [col-start] minmax(min-content, calc(var(--grid-width) / var(--number-of-columns)))
+                    [col-end]
+            )
+            [center-end];
+    }
 
     @include mediaQuery(bp-600) {
         display: flex;

@@ -23,12 +23,12 @@ const Footer = () => (
             <li>GitHub Repo</li>
         </a>
         &middot;
-        <li className="footer__list__item">Built with</li>
+        <li className="footer__list__item footer__list__item--built-with">Built with</li>
         <a
             href="https://reactjs.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link">
+            className="footer__list__item footer__list__item--link footer__list__item--built-with footer__list__item--built-with">
             <li>React (Context API & Hooks)</li>
         </a>
         &middot;
@@ -36,7 +36,7 @@ const Footer = () => (
             href="https://developer.github.com/v3/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link">
+            className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>GitHub API</li>
         </a>
         &middot;
@@ -44,7 +44,7 @@ const Footer = () => (
             href="https://sass-lang.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link">
+            className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>Sass</li>
         </a>
         &middot;
@@ -52,7 +52,7 @@ const Footer = () => (
             href="https://www.chartjs.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link">
+            className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>Charts.js</li>
         </a>
         &middot;
@@ -60,7 +60,7 @@ const Footer = () => (
             href="https://github.com/joshwcomeau/react-flip-move"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link">
+            className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>React Flip Move</li>
         </a>
         <li className="footer__list__item ">and more!</li>

@@ -54,6 +54,7 @@
     &__random {
         @include mediaQuery(bp-800) {
             margin-left: 1.5rem;
+            margin-top: 1.5rem;
         }
     }
 
@@ -64,6 +65,7 @@
 
             @include mediaQuery(bp-800) {
                 margin-left: 1.5rem;
+                margin-top: 1.5rem;
             }
 
             svg {

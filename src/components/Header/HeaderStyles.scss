@@ -1,5 +1,9 @@
+@import '../../styles/media-queries';
+
 .header {
-    --starting-width: 5rem;
+    --width: 5rem;
+    --width-tablet: 4.5rem;
+    --width-mobile: 4rem;
     --expanded-width: 30rem;
 
     position: fixed;
@@ -7,6 +11,11 @@
     width: 100%;
     display: flex;
     justify-content: left;
+    z-index: 3;
+
+    @include mediaQuery(bp-800) {
+        flex-direction: column;
+    }
 
     &__btn {
         display: flex;
@@ -14,14 +23,20 @@
         align-items: center;
         margin-right: 1.5rem;
         margin-top: 1rem;
-        height: var(--starting-width);
-        width: var(--starting-width);
+        height: var(--width);
+        width: var(--width);
         color: var(--color-white);
         background-color: var(--color-primary);
         border-radius: 50px;
         box-shadow: 0 0.5rem 2rem -1.2rem var(--color-primary);
         border: 2px solid var(--color-primary);
         font-size: 2rem;
+
+        @include mediaQuery(bp-800) {
+            height: var(--width-mobile);
+            width: var(--width-mobile);
+            font-size: 1.8rem;
+        }
 
         &:hover,
         &:focus {
@@ -36,18 +51,32 @@
         margin-left: 1.5rem;
     }
 
+    &__random {
+        @include mediaQuery(bp-800) {
+            margin-left: 1.5rem;
+        }
+    }
+
     &__form {
         &__search-expand {
             position: relative;
-            transition: var(--transition);
             overflow: hidden;
+
+            @include mediaQuery(bp-800) {
+                margin-left: 1.5rem;
+            }
 
             svg {
                 position: absolute;
                 left: 1.3rem;
+
+                @include mediaQuery(bp-800) {
+                    left: 0.9rem;
+                }
             }
 
             &--active {
+                transition: var(--transition);
                 width: var(--expanded-width);
                 justify-content: space-between;
                 background-color: var(--color-primary-dark);

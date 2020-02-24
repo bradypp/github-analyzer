@@ -23,8 +23,8 @@ const Stats = () => {
     return (
         <div className="stats">
             <div className="stats__chart">
-                <h2 className="stats__chart__heading">Most Starred Repos</h2>
                 <div className="stats__chart__container">
+                    <h2 className="stats__chart__container__heading">Most Starred Repos</h2>
                     {statsLoading || userLoading || reposLoading ? (
                         <div className="stats__spinner">
                             <Spinner overlayActive={false} />
@@ -35,8 +35,8 @@ const Stats = () => {
                 </div>
             </div>
             <div className="stats__chart">
-                <h2 className="stats__chart__heading">Top Languages</h2>
                 <div className="stats__chart__container">
+                    <h2 className="stats__chart__container__heading">Top Languages</h2>
                     {statsLoading || userLoading || reposLoading ? (
                         <div className="stats__spinner">
                             <Spinner overlayActive={false} />
@@ -47,8 +47,8 @@ const Stats = () => {
                 </div>
             </div>
             <div className="stats__chart">
-                <h2 className="stats__chart__heading">Stars Per Language</h2>
                 <div className="stats__chart__container">
+                    <h2 className="stats__chart__container__heading">Stars Per Language</h2>
                     {statsLoading || userLoading || reposLoading ? (
                         <div className="stats__spinner">
                             <Spinner overlayActive={false} />
@@ -59,8 +59,8 @@ const Stats = () => {
                 </div>
             </div>
             <div className="stats__chart">
-                <h2 className="stats__chart__heading">Largest Repos (KB)</h2>
                 <div className="stats__chart__container">
+                    <h2 className="stats__chart__container__heading">Largest Repos (KB)</h2>
                     {statsLoading || userLoading || reposLoading ? (
                         <div className="stats__spinner">
                             <Spinner overlayActive={false} />

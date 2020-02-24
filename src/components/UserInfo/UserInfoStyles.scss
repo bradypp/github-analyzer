@@ -1,3 +1,5 @@
+@import '../../styles/media-queries';
+
 .user-info {
     grid-column: center-start / col-end 5;
 
@@ -38,17 +40,21 @@
         &__img {
             display: flex;
             justify-content: center;
+            margin-bottom: 1.8rem;
 
             img {
                 border-radius: 50%;
                 width: 90%;
-                margin-bottom: 1rem;
                 border: 1rem solid var(--color-primary);
+
+                @include mediaQuery(bp-600) {
+                    width: 60%;
+                }
             }
         }
 
         &__name {
-            margin-bottom: -1.1rem;
+            line-height: 1;
             text-align: center;
             align-self: center;
         }

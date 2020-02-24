@@ -1,0 +1,44 @@
+// MEDIA QUERY MANAGER
+// ORDER: Base + typography > general layout + grid > page layout > components
+// 1em = 16px
+
+// RESPONSIVE BREAKPOINTS
+$bp-1800: 112.5em; // 1800px, Big desktop
+$bp-1200: 75em; // 1200px, Small monitor
+$bp-1000: 62.5em; // 1000px, Tablet landscape
+$bp-800: 50em; // 800px, Tablet portrait
+$bp-600: 37.5em; // 600px, Phone landscape
+$bp-420: 26.25em; // 420px, Phone portrait
+
+@mixin mediaQuery($breakpoint) {
+    @if $breakpoint == bp-420 {
+        @media only screen and (max-width: $bp-420) {
+            @content;
+        }
+    }
+    @if $breakpoint == bp-600 {
+        @media only screen and (max-width: $bp-600) {
+            @content;
+        }
+    }
+    @if $breakpoint == bp-800 {
+        @media only screen and (max-width: $bp-800) {
+            @content;
+        }
+    }
+    @if $breakpoint == bp-1000 {
+        @media only screen and (max-width: $bp-1000) {
+            @content;
+        }
+    }
+    @if $breakpoint == bp-1200 {
+        @media only screen and (max-width: $bp-1200) {
+            @content;
+        }
+    }
+    @if $breakpoint == bp-1800 {
+        @media only screen and (min-width: $bp-1800) {
+            @content;
+        }
+    }
+}

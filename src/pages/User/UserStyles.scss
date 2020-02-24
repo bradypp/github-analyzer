@@ -1,7 +1,9 @@
+@import '../../styles/media-queries';
+
 .user {
-    --grid-width: calc(130rem - var(--number-of-columns) * var(--grid-gap));
-    --number-of-columns: 16;
-    --grid-gap: 2rem;
+    @include mediaQuery(bp-1800) {
+        --grid-width: calc(140rem - var(--number-of-columns) * var(--grid-gap));
+    }
 
     display: grid;
     grid-template-columns:
@@ -13,14 +15,42 @@
         [center-end] minmax(6rem, 1fr) [full-end];
     grid-gap: var(--grid-gap);
 
+    @include mediaQuery(bp-1000) {
+        grid-template-columns:
+            [full-start] 1fr [center-start] repeat(
+                var(--number-of-columns),
+                [col-start] minmax(min-content, calc(var(--grid-width) / var(--number-of-columns)))
+                    [col-end]
+            )
+            [center-end] 1fr [full-end];
+        grid-gap: var(--grid-gap-mobile);
+    }
+
+    @include mediaQuery(bp-600) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     &__section-1,
     &__section-2 {
-        padding: 2rem 0;
+        padding: var(--grid-gap) 0;
         background-color: var(--color-dark);
         min-height: 50vh;
+
+        @include mediaQuery(bp-600) {
+            padding: var(--grid-gap-mobile) var(--grid-gap-mobile);
+            grid-gap: var(--grid-gap-mobile);
+        }
     }
+
     &__footer {
         padding: 6rem 0 3rem;
         background-color: var(--color-dark);
+
+        @include mediaQuery(bp-1000) {
+            padding: 3rem 0 3rem;
+        }
     }
 }

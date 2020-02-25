@@ -20,7 +20,7 @@
 
         &__github-icon {
             color: var(--color-primary);
-            margin-bottom: 3rem;
+            margin: 3rem;
         }
 
         &__label {
@@ -35,7 +35,7 @@
         &__input {
             width: 65rem;
             height: 8rem;
-            margin: 2.5rem 0 1.5rem 0;
+            margin: 2.5rem 0 2rem 0;
             padding: 1.5rem;
             font-size: 3rem;
             text-align: center;
@@ -90,7 +90,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
 
             &--hide {
                 display: none;
@@ -105,8 +105,8 @@
             border: 2px solid var(--color-primary);
             font-size: 1.8rem;
             font-weight: 600;
-            width: 15rem;
-            height: 6rem;
+            width: 14rem;
+            height: 5.8rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
             outline: none;

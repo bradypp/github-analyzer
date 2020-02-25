@@ -44,12 +44,12 @@
         &__img {
             display: flex;
             justify-content: center;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
 
             img {
                 border-radius: 50%;
-                width: 90%;
-                border: 1rem solid var(--color-primary);
+                width: 85%;
+                box-shadow: var(--shadow-medium);
 
                 @include mediaQuery(bp-600) {
                     width: 60%;

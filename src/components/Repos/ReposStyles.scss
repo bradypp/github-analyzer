@@ -41,19 +41,19 @@
             font-weight: 600;
             line-height: 1;
             text-align: left;
-            background-color: var(--color-white-main);
-            border: 1px solid var(--color-white-main);
-            border-bottom: 1px solid rgb(179, 207, 238);
-
+            background-color: var(--color-white);
+            border: none;
             padding: 10px 7px;
             border-radius: 5px;
+            outline: none;
+
             transition: var(--transition);
 
             &:hover,
             &:focus {
                 cursor: pointer;
-                background: rgb(182, 206, 233);
-                border-color: rgb(182, 206, 233);
+                background: var(--color-primary-light);
+                border-color: var(--color-primary-light);
             }
 
             svg {
@@ -63,7 +63,7 @@
             }
 
             &--open {
-                background: var(--color-white-main);
+                background: var(--color-white);
                 border-radius: 0;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
@@ -84,7 +84,7 @@
             box-shadow: 0 0.5rem 3rem -1.5rem rgba(0, 0, 0, 0.2);
             opacity: 0;
             visibility: hidden;
-            background-color: rgb(182, 206, 233);
+            background-color: var(--color-primary-light);
 
             &:last-child {
                 border-bottom-left-radius: 5px;
@@ -97,8 +97,7 @@
 
                 button {
                     border: 0;
-                    border-bottom: 1px solid rgb(179, 207, 238);
-                    background: var(--color-white-main);
+                    background: var(--color-white);
                     padding: 10px 7px;
                     width: 100%;
                     font-size: 1.4rem;
@@ -109,7 +108,7 @@
                     &:hover,
                     &:focus {
                         cursor: pointer;
-                        background: rgb(182, 206, 233);
+                        background: var(--color-primary-light);
                     }
                 }
             }

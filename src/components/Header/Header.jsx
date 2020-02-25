@@ -60,12 +60,13 @@ const Header = () => {
             </div>
             <form onSubmit={onSubmit} className="header__form">
                 <div ref={wrapperRef} onClick={expandSearch}>
-                    <label
-                        htmlFor="username"
-                        className={`header__btn header__form__search-expand ${
-                            isExpandActive ? 'header__form__search-expand--active' : ''
-                        }`}>
-                        <FontAwesomeIcon icon={faSearch} />
+                    <label htmlFor="username" className="header__form__search-container">
+                        <div
+                            className={`header__btn header__form__search-expand ${
+                                isExpandActive ? 'header__form__search-expand--active' : ''
+                            }`}>
+                            <FontAwesomeIcon icon={faSearch} />
+                        </div>
                         <input
                             type="text"
                             name="username"

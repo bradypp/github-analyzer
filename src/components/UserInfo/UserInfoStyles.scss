@@ -47,8 +47,8 @@
             margin-bottom: 2rem;
 
             img {
-                border-radius: 50%;
                 width: 85%;
+                border-radius: 50%;
                 box-shadow: var(--shadow-medium);
 
                 @include mediaQuery(bp-600) {

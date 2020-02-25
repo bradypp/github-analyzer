@@ -6,11 +6,6 @@
     --width-mobile: 4rem;
     --expanded-width: 30rem;
 
-    // @include mediaQuery(bp-800) {
-    //     top: 11.2rem;
-    //     left: 1rem;
-    // }
-
     position: fixed;
     top: 0;
     width: 100%;
@@ -106,18 +101,15 @@
                 font-size: 2rem;
                 font-weight: 600;
                 color: var(--color-white);
-                transition: var(--transition);
                 margin-top: 2px;
-                margin-left: 5.2rem;
-                width: 22rem;
+                margin-left: 4.2rem;
+                width: 0rem;
                 height: 3rem;
-                @include mediaQuery(bp-800) {
-                    top: 11.2rem;
-                    left: 1rem;
-                }
                 outline: none;
                 border: none;
                 opacity: 0;
+                transform: translateX(-1rem);
+                transition: var(--transition) 0.05s;
 
                 @include mediaQuery(bp-800) {
                     top: 11.2rem;
@@ -134,8 +126,8 @@
 
                 &--active {
                     opacity: 1;
+                    transform: translateX(1rem);
                     width: 22rem;
-                    height: 3rem;
 
                     &::placeholder {
                         opacity: 0.7;

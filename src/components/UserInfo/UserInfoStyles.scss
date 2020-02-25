@@ -3,6 +3,10 @@
 .user-info {
     grid-column: center-start / col-end 5;
 
+    @include mediaQuery(bp-600) {
+        width: 100%;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;

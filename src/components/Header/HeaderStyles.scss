@@ -2,9 +2,15 @@
 
 .header {
     --width: 5rem;
-    --width-tablet: 4.5rem;
-    --width-mobile: 4rem;
+    --width-mobile: 4.5rem;
     --expanded-width: 30rem;
+
+    @include mediaQuery(bp-800) {
+        --expanded-width: 28rem;
+    }
+    @include mediaQuery(bp-420) {
+        --expanded-width: 26rem;
+    }
 
     position: fixed;
     top: 0;
@@ -12,10 +18,6 @@
     display: flex;
     justify-content: left;
     z-index: 3;
-
-    @include mediaQuery(bp-800) {
-        flex-direction: column;
-    }
 
     &__btn {
         display: flex;
@@ -52,15 +54,9 @@
         margin-left: 1.5rem;
     }
 
-    &__random {
-        @include mediaQuery(bp-800) {
-            margin-left: 1.5rem;
-        }
-    }
-
     &__form {
         &__search-container {
-            width: 22px;
+            width: var(--expanded-width);
         }
 
         &__search-expand {
@@ -68,16 +64,12 @@
             overflow: hidden;
             transition: var(--transition);
 
-            @include mediaQuery(bp-800) {
-                margin-left: 1.5rem;
-            }
-
             svg {
                 position: absolute;
                 left: 1.3rem;
 
                 @include mediaQuery(bp-800) {
-                    left: 0.9rem;
+                    left: 1.15rem;
                 }
             }
 
@@ -112,8 +104,9 @@
                 transition: var(--transition) 0.05s;
 
                 @include mediaQuery(bp-800) {
-                    top: 11.2rem;
-                    left: 1rem;
+                    top: 1.6rem;
+                    margin-left: 3.6rem;
+                    height: 2.8rem;
                 }
 
                 &::placeholder {
@@ -128,6 +121,10 @@
                     opacity: 1;
                     transform: translateX(1rem);
                     width: 22rem;
+
+                    @include mediaQuery(bp-800) {
+                        width: 20rem;
+                    }
 
                     &::placeholder {
                         opacity: 0.7;

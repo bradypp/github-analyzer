@@ -46,11 +46,11 @@
     }
 
     &__footer {
-        padding: 6rem 0 3rem;
+        padding: 6rem 2rem 3rem;
         background-color: var(--color-dark);
 
         @include mediaQuery(bp-1000) {
-            padding: 3rem 0 3rem;
+            padding: 3rem 2rem;
         }
     }
 }

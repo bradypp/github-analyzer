@@ -2,7 +2,7 @@
 
 .user {
     @include mediaQuery(bp-1800) {
-        --grid-width: calc(140rem - var(--number-of-columns) * var(--grid-gap));
+        --grid-width: calc(140rem - (var(--number-of-columns) - 1) * var(--grid-gap));
     }
 
     display: grid;

@@ -5,7 +5,7 @@ import { GitHubContext } from 'context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faHome, faRandom } from '@fortawesome/free-solid-svg-icons';
 import { RepoCorner } from 'components';
-import { useClickedOutsideHandler } from 'utils/hooks';
+import useClickedOutsideHandler from 'utils/useOnOutsideClick';
 import './HeaderStyles.scss';
 
 const Header = () => {
@@ -46,7 +46,10 @@ const Header = () => {
 
     const expandSearch = () => !isExpandActive && setIsExpandActive(!isExpandActive);
 
-    useClickedOutsideHandler(wrapperRef, isExpandActive, setIsExpandActive, !isExpandActive);
+    useClickedOutsideHandler(wrapperRef, isExpandActive, () => {
+        setIsExpandActive(false);
+        setSearchText('');
+    });
 
     return (
         <div className="header">

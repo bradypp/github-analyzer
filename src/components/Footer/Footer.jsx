@@ -12,9 +12,9 @@ const Footer = () => (
             <li>Home</li>
         </Link>
         &middot;
-        {/* <a href="/" target="_blank" rel="noopener noreferrer">
-                    <li className="footer__list__item">My Portfolio</li>
-                </a> */}
+        <a href="https://www.paulbrady.dev" target="_blank" rel="noopener noreferrer">
+            <li className="footer__list__item">My Website</li>
+        </a>
         <a
             href="https://github.com/bradypp/github-analyzer"
             target="_blank"

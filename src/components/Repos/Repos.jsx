@@ -5,7 +5,7 @@ import Octicon, { TriangleDown } from '@primer/octicons-react';
 import { GitHubContext } from 'context';
 import FlipMove from 'react-flip-move';
 import { RepoItem, Spinner } from 'components';
-import { useClickedOutsideHandler } from 'utils/hooks';
+import useClickedOutsideHandler from 'utils/useOnOutsideClick';
 
 import './ReposStyles.scss';
 
@@ -28,7 +28,7 @@ const Repos = () => {
 
     const sortTypes = ['stars', 'forks', 'size'];
 
-    useClickedOutsideHandler(wrapperRef, dropdownOpen, setDropdownOpen, !dropdownOpen);
+    useClickedOutsideHandler(wrapperRef, dropdownOpen, () => setDropdownOpen(false));
 
     useEffect(() => {
         if (error.active) {

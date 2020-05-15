@@ -9,7 +9,11 @@ const Footer = () => (
             <li>Home</li>
         </Link>
         &middot;
-        <a href="https://www.paulbrady.dev" target="_blank" rel="noopener noreferrer">
+        <a
+            href="https://www.paulbrady.dev"
+            className="footer__list__item footer__list__item--link"
+            target="_blank"
+            rel="noopener noreferrer">
             <li className="footer__list__item">My Website</li>
         </a>
         &middot;

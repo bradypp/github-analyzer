@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './FooterStyles.scss';
 
-// TODO: wrap each list item with li
 const Footer = () => (
     <ul className="footer__list">
         <Link to="/" className="footer__list__item footer__list__item--link">
@@ -14,7 +13,7 @@ const Footer = () => (
             className="footer__list__item footer__list__item--link"
             target="_blank"
             rel="noopener noreferrer">
-            <li className="footer__list__item">My Website</li>
+            <li>My Website</li>
         </a>
         &middot;
         <a

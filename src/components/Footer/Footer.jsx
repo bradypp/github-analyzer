@@ -54,7 +54,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link footer__list__item--built-with">
-            <li>Scss</li>
+            <li>SCSS</li>
         </a>
         &middot;
         <a

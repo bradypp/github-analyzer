@@ -73,7 +73,6 @@ const Home = () => {
                     <button type="submit" className="home__form__submit">
                         Search
                     </button>
-                    <span className="home__form__text">or</span>
                     <button type="button" className="home__form__submit" onClick={onRandom}>
                         Random!
                     </button>

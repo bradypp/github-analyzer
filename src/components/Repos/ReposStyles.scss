@@ -2,6 +2,7 @@
 
 .repos {
     grid-column: center-start / center-end;
+    width: 100%;
 
     header {
         display: flex;
@@ -32,13 +33,18 @@
         font-size: 1.4rem;
         font-weight: 600;
 
+        * {
+            font-family: var(--mono-font-family);
+            font-size: 1.4rem;
+            letter-spacing: 0.01em;
+            font-weight: 600;
+        }
+
         &__button {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            font-size: 1.5rem;
-            font-weight: 600;
             line-height: 1;
             text-align: left;
             background-color: var(--color-white);

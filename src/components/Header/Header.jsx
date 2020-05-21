@@ -52,44 +52,48 @@ const Header = () => {
     });
 
     return (
-        <div className="header">
-            <Link to="/" className="header__btn header__home">
-                <FontAwesomeIcon icon={faHome} />
-            </Link>
-            <div onClick={onRandom}>
-                <div className="header__btn header__random">
-                    <FontAwesomeIcon icon={faRandom} />
+        <>
+            <div className="header">
+                <Link to="/" className="header__btn header__home">
+                    <FontAwesomeIcon icon={faHome} />
+                </Link>
+                <div onClick={onRandom}>
+                    <div className="header__btn header__random">
+                        <FontAwesomeIcon icon={faRandom} />
+                    </div>
                 </div>
+                <form onSubmit={onSubmit} className="header__form">
+                    <div ref={wrapperRef} onClick={expandSearch}>
+                        <label htmlFor="username" className="header__form__search-container">
+                            <div
+                                className={`header__btn header__form__search-expand ${
+                                    isExpandActive ? 'header__form__search-expand--active' : ''
+                                }`}>
+                                <FontAwesomeIcon icon={faSearch} />
+                            </div>
+                            <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                className={`header__form__search-expand__input ${
+                                    isExpandActive
+                                        ? 'header__form__search-expand__input--active'
+                                        : ''
+                                } ${
+                                    error.active && error.type === 404
+                                        ? 'header__form__search-expand__input--error'
+                                        : ''
+                                }`}
+                                placeholder="Enter Username..."
+                                value={searchText}
+                                onChange={onChange}
+                            />
+                        </label>
+                    </div>
+                </form>
             </div>
-            <form onSubmit={onSubmit} className="header__form">
-                <div ref={wrapperRef} onClick={expandSearch}>
-                    <label htmlFor="username" className="header__form__search-container">
-                        <div
-                            className={`header__btn header__form__search-expand ${
-                                isExpandActive ? 'header__form__search-expand--active' : ''
-                            }`}>
-                            <FontAwesomeIcon icon={faSearch} />
-                        </div>
-                        <input
-                            type="text"
-                            name="username"
-                            id="username"
-                            className={`header__form__search-expand__input ${
-                                isExpandActive ? 'header__form__search-expand__input--active' : ''
-                            } ${
-                                error.active && error.type === 404
-                                    ? 'header__form__search-expand__input--error'
-                                    : ''
-                            }`}
-                            placeholder="Enter Username..."
-                            value={searchText}
-                            onChange={onChange}
-                        />
-                    </label>
-                </div>
-            </form>
             <RepoCorner />
-        </div>
+        </>
     );
 };
 

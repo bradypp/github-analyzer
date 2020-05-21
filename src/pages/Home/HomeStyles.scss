@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: var(--color-dark);
     height: 100vh;
 
@@ -20,7 +21,7 @@
 
         &__github-icon {
             color: var(--color-primary);
-            margin: 3rem;
+            margin: 2.4vh;
         }
 
         &__label {
@@ -35,7 +36,7 @@
         &__input {
             width: 65rem;
             height: 8rem;
-            margin: 2.5rem 0 1.6rem 0;
+            margin: 4vh 0 3.2vh 0;
             padding: 1.5rem;
             font-size: 3rem;
             text-align: center;
@@ -87,7 +88,6 @@
 
         &__button-container {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin-top: 2.2rem;
@@ -111,6 +111,10 @@
             transition: var(--transition);
             outline: none;
 
+            &:first-of-type {
+                margin-right: 3.2rem;
+            }
+
             &:hover,
             &:focus {
                 cursor: pointer;
@@ -118,14 +122,6 @@
                 background: var(--color-primary-dark);
                 border: 2px solid var(--color-primary-dark);
             }
-        }
-
-        &__text {
-            color: var(--color-primary-light);
-            opacity: 0.5;
-            font-size: 1.8rem;
-            font-weight: 600;
-            padding: 1.5rem;
         }
     }
 }

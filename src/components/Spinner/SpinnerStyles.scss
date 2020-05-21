@@ -1,20 +1,19 @@
 .spinner-overlay {
-    height: 60vh;
+    min-height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-// TODO: update spinner color (make whiter?)
 .spinner {
     display: inline-block;
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 50%;
-    color: #636767;
-    border: 5px solid #aaa;
-    border-top-color: #666;
+    color: var(--color-white-main);
+    border: 5px solid var(--color-white-main);
+    border-top-color: var(--color-dark-light-2);
     animation: spin 1s ease-in-out infinite;
 
     &--small {

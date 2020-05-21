@@ -12,14 +12,22 @@ const Footer = () => (
             href="https://www.paulbrady.dev"
             className="footer__list__item footer__list__item--link"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer nofollow">
             <li>My Website</li>
+        </a>
+        &middot;
+        <a
+            href="https://www.twitter.com/bradypp"
+            className="footer__list__item footer__list__item--link"
+            target="_blank"
+            rel="noopener noreferrer nofollow">
+            <li>Twitter</li>
         </a>
         &middot;
         <a
             href="https://github.com/bradypp/github-analyzer"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link">
             <li>GitHub Repo</li>
         </a>
@@ -28,15 +36,15 @@ const Footer = () => (
         <a
             href="https://reactjs.org/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link footer__list__item--built-with footer__list__item--built-with">
-            <li>React (Context API & Hooks)</li>
+            <li>React</li>
         </a>
         &middot;
         <a
             href="https://developer.github.com/v3/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>GitHub API</li>
         </a>
@@ -44,25 +52,17 @@ const Footer = () => (
         <a
             href="https://sass-lang.com/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link footer__list__item--built-with">
-            <li>Sass</li>
+            <li>Scss</li>
         </a>
         &middot;
         <a
             href="https://www.chartjs.org/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="footer__list__item footer__list__item--link footer__list__item--built-with">
             <li>Charts.js</li>
-        </a>
-        &middot;
-        <a
-            href="https://github.com/joshwcomeau/react-flip-move"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__list__item footer__list__item--link footer__list__item--built-with">
-            <li>React Flip Move</li>
         </a>
         <li className="footer__list__item ">and more!</li>
     </ul>
